@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+}
+
+.library {
+  width: 280px;
+}
+
+.editor {
+  flex: 1;
+}
+
+.preview {
+  flex: 1;
+}

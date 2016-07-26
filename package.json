@@ -1,0 +1,51 @@
+{
+  "name": "meditor",
+  "version": "0.0.1",
+  "description": "a markdown editor, use react, redux",
+  "dependencies": {
+    "immutable": "^3.8.1",
+    "isomorphic-fetch": "^2.2.1",
+    "marked": "^0.3.5",
+    "normalize.css": "^4.2.0",
+    "react": "^15.1.0",
+    "react-css-modules": "^3.7.6",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.1",
+    "react-router-redux": "^4.0.4",
+    "redux": "^3.5.2",
+    "redux-actions": "^0.10.1",
+    "redux-immutable": "^3.0.6",
+    "redux-logger": "^2.6.1",
+    "redux-promise": "^0.5.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-syntax-async-functions": "^6.8.0",
+    "babel-plugin-transform-class-properties": "^6.9.1",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-plugin-transform-regenerator": "^6.9.0",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.19.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "keywords": [
+    "editor",
+    "markdown"
+  ],
+  "author": "zhiquan"
+}

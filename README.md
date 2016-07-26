@@ -1,2 +1,2 @@
 # meditor
-a markdown editor based on react, redux
+a markdown editor, use react, redux

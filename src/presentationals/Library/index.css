@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #a9a9a9;
+  background-color: rgba(250, 250, 250, .9);
+}
+
+.listView {
+  flex: 1;
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.listView > li {
+  height: 44px;
+  line-height: 44px;
+  /*border-bottom: 1px solid #a9a9a9;*/
+  margin-left: 15px;
+}
+
+.listView > li.active::before {
+  display: inline-block;
+  content: '';
+  width: 4px;
+  height: 100%;
+  margin-left: -15px;
+  margin-right: 7px;
+  border-left: 4px solid #030303;
+  vertical-align: middle;
+}
+
+.searchBar {
+
+}

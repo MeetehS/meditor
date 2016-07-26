@@ -2,7 +2,12 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { fromJS } from 'immutable'
 import { getyyyymmddhhMMss } from '../utils/date'
-import { getArticles, addArticle, changeEditorValue } from '../actions/libraryActions'
+import {
+  getArticles,
+  addArticle,
+  selectArticleListItem,
+  changeEditorValue,
+} from '../actions/libraryActions'
 import Home from '../presentationals/Home'
 
 class HomeContainer extends Component {
@@ -35,11 +40,18 @@ class HomeContainer extends Component {
     isOpen: true,
   })))
 
+  onArticleListItemClick = (articleID) => this.props.dispatch(selectArticleListItem(articleID))
+
   onEdit = (event) => this.props.dispatch(changeEditorValue(event.target.value))
 
   render() {
     return (
-      <Home onAddBtnClick={this.onAddBtnClick} onEdit={this.onEdit} {...this.props} />
+      <Home
+        onAddBtnClick={this.onAddBtnClick}
+        onArticleListItemClick={this.onArticleListItemClick}
+        onEdit={this.onEdit}
+        {...this.props}
+      />
     )
   }
 }

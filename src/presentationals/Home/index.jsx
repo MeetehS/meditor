@@ -12,7 +12,7 @@ const propTypes = {
   onAddBtnClick: PropTypes.func,
 }
 
-const Home = ({ library, onAddBtnClick, onEdit }) => {
+const Home = ({ library, onAddBtnClick, onArticleListItemClick, onEdit }) => {
   let currentArticle
 
   for (let i = 0; i < library.size; i++) {
@@ -27,7 +27,12 @@ const Home = ({ library, onAddBtnClick, onEdit }) => {
       <ToolBar />
 
       <div className={styles.content}>
-        <Library className={styles.library} library={library} onAddBtnClick={onAddBtnClick} />
+        <Library
+          className={styles.library}
+          library={library}
+          onAddBtnClick={onAddBtnClick}
+          onArticleListItemClick={onArticleListItemClick}
+        />
 
         <Editor className={styles.editor} onChange={onEdit} article={currentArticle} />
 

@@ -11,6 +11,11 @@ export const GET_ARTICLES = 'GET_ARTICLES'
 export const ADD_ARTICLE = 'ADD_ARTICLE'
 
 /**
+ * 切换文章
+ */
+export const SELECT_ARTICLE_LISTITEM = 'SELECT_ARTICLE_LISTITEM'
+
+/**
  * 修改编辑器的值
  */
 export const CHANGE_EDITOR_VALUE = 'CHANGE_EDITOR_VALUE'

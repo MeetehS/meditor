@@ -18,19 +18,16 @@
 .listView > li {
   height: 44px;
   line-height: 44px;
-  /*border-bottom: 1px solid #a9a9a9;*/
-  margin-left: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.listView > li.active::before {
-  display: inline-block;
-  content: '';
-  width: 4px;
-  height: 100%;
-  margin-left: -15px;
-  margin-right: 7px;
+.listView > li.active {
+  padding-left: 11px;
   border-left: 4px solid #030303;
-  vertical-align: middle;
 }
 
 .searchBar {

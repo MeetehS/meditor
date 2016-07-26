@@ -31,7 +31,7 @@ const Home = ({ library, onAddBtnClick, onEdit }) => {
 
         <Editor className={styles.editor} onChange={onEdit} article={currentArticle} />
 
-        <Preview className={styles.preview} />
+        <Preview className={styles.preview} article={currentArticle} />
       </div>
     </div>
   )

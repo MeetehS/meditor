@@ -11,6 +11,7 @@ const Editor = ({ className, article, ...other }) => (
     className={`${styles.wrapper} ${className}`}
     value={article.get('content')}
     placeholder="Write here"
+    autoFocus
     {...other}
   />
 )

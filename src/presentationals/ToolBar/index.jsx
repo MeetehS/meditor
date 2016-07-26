@@ -17,12 +17,12 @@ const ToolBar = ({ ...other }) => (
     <button className={styles.toolBarBtn} title="##### add your h5 here">H5</button>
     <button className={styles.toolBarBtn} title="###### add your h6 here">H6</button>
     <button className={styles.toolBarBtn} title="** add your strong here **"><strong>B</strong></button>
-    <button className={styles.toolBarBtn} title="* add your em here *"><em>I</em></button>
-    <button className={styles.toolBarBtn} title="----------">Hr</button>
+    <button className={styles.toolBarBtn} title="_ add your em here _"><em>I</em></button>
+    <button className={styles.toolBarBtn} title="---">Hr</button>
 
     <button className={styles.toolBarBtn} title="1. add your ol here">Ol</button>
     <button className={styles.toolBarBtn} title="* add your ul here">Ul</button>
-    <button className={styles.toolBarBtn} title="\> add your blockquote here">Blockquote</button>
+    <button className={styles.toolBarBtn} title="&gt; add your blockquote here">Blockquote</button>
 
     <button className={styles.toolBarBtn} title="[add your link title here](link here)">Link</button>
     <button className={styles.toolBarBtn} title="[add your image alt here](image link here)">Image</button>

@@ -7,18 +7,21 @@ const config = {
   entry: {
     home: ['babel-polyfill', './src/index.jsx'],
     vendor: [
+      'github-markdown-css',
+      'immutable',
+      'isomorphic-fetch',
+      'marked',
+      'normalize.css',
       'react',
-      'react-dom',
       'react-css-modules',
-      'redux',
-      'redux-promise',
-      'redux-actions',
+      'react-dom',
       'react-redux',
       'react-router',
       'react-router-redux',
-      'isomorphic-fetch',
-      'immutable',
+      'redux',
+      'redux-actions',
       'redux-immutable',
+      'redux-promise',
     ],
   },
   output: {
@@ -39,6 +42,7 @@ const config = {
     }, {
       include: [
         path.resolve(__dirname, 'node_modules/normalize.css'),
+        path.resolve(__dirname, 'node_modules/github-markdown-css'),
       ],
       test: /\.css$/,
       loader: 'style-loader!css-loader',

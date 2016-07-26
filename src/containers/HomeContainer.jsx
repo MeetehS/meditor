@@ -13,7 +13,14 @@ class HomeContainer extends Component {
   componentDidMount = () => this.props.dispatch(getArticles(fromJS([{
     id: 2,
     title: 'Article2',
-    content: 'Article2-content',
+    content: 'Article2',
+    created_at: '2016-07-26 15:58:00',
+    updated_at: '2016-07-26 15:58:00',
+    isOpen: false,
+  }, {
+    id: 3,
+    title: 'Article3',
+    content: 'Article3',
     created_at: '2016-07-26 15:58:00',
     updated_at: '2016-07-26 15:58:00',
     isOpen: false,
@@ -32,7 +39,7 @@ class HomeContainer extends Component {
 
   render() {
     return (
-      <Home onAddBtnClick={this.onAddBtnClick} {...this.props} />
+      <Home onAddBtnClick={this.onAddBtnClick} onEdit={this.onEdit} {...this.props} />
     )
   }
 }

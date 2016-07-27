@@ -13,7 +13,7 @@ npm start
 ## TODO
 - [x] markdown parser
 - [x] live preview
-- [ ] synchronized scrolling
+- [x] sync scrolling
 - [x] article list
 - [x] autosave
 - [ ] toolbar
@@ -25,3 +25,5 @@ npm start
 - add markdown parser
 - add live preview
 - add autosave
+### v0.0.2
+- add sync scrolling

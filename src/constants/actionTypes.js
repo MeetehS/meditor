@@ -19,3 +19,8 @@ export const SELECT_ARTICLE_LISTITEM = 'SELECT_ARTICLE_LISTITEM'
  * 修改编辑器的值
  */
 export const CHANGE_EDITOR_VALUE = 'CHANGE_EDITOR_VALUE'
+
+/**
+ * append cmd to editor
+ */
+export const APPEND_CMD = 'APPEND_CMD'

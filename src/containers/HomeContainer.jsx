@@ -7,6 +7,7 @@ import {
   addArticle,
   selectArticleListItem,
   changeEditorValue,
+  appendCmd,
 } from '../actions/libraryActions'
 import Home from '../presentationals/Home'
 
@@ -33,6 +34,8 @@ class HomeContainer extends Component {
 
   onEdit = (event) => this.props.dispatch(changeEditorValue(event.target.value))
 
+  onToolBarBtnClick = (cmd) => this.props.dispatch(appendCmd(fromJS(cmd)))
+
   newArticle = () => ({
     id: Math.abs(Math.random() * 10000),
     title: 'write here',
@@ -40,6 +43,7 @@ class HomeContainer extends Component {
     created_at: getyyyymmddhhMMss(new Date()),
     updated_at: getyyyymmddhhMMss(new Date()),
     isOpen: true,
+    cmds: [],
   })
 
   render() {
@@ -48,6 +52,7 @@ class HomeContainer extends Component {
         onAddBtnClick={this.onAddBtnClick}
         onArticleListItemClick={this.onArticleListItemClick}
         onEdit={this.onEdit}
+        onToolBarBtnClick={this.onToolBarBtnClick}
         {...this.props}
       />
     )

@@ -15,8 +15,9 @@ npm start
 - [x] live preview
 - [x] sync scrolling
 - [x] article list
+- [ ] search article
 - [x] autosave
-- [ ] toolbar
+- [x] toolbar
 
 ## CHANGELOG
 ### v0.0.1
@@ -27,3 +28,5 @@ npm start
 - add autosave
 ### v0.0.2
 - add sync scrolling
+### v0.0.3
+- add toolbar

@@ -14,6 +14,7 @@ class Home extends Component {
     onEdit: PropTypes.func,
     onAddBtnClick: PropTypes.func,
     onArticleListItemClick: PropTypes.func,
+    onToolBarBtnClick: PropTypes.func,
   }
 
   constructor(props) {
@@ -31,7 +32,7 @@ class Home extends Component {
   }
 
   render = () => {
-    const { library, onAddBtnClick, onArticleListItemClick, onEdit } = this.props
+    const { library, onAddBtnClick, onArticleListItemClick, onEdit, onToolBarBtnClick } = this.props
     const { scrollPercentage } = this.state
 
     let currentArticle
@@ -45,7 +46,7 @@ class Home extends Component {
 
     return (
       <div className={styles.container}>
-        <ToolBar />
+        <ToolBar onToolBarBtnClick={onToolBarBtnClick} />
 
         <div className={styles.content}>
           <Library

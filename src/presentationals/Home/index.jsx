@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { fromJS } from 'immutable'
 import { getyyyymmddhhMMss } from '../../utils/date'
 import ToolBar from '../ToolBar'
@@ -7,42 +7,70 @@ import Editor from '../Editor'
 import Preview from '../Preview'
 import styles from './index.css'
 
-const propTypes = {
-  user: PropTypes.object,
-  // library: PropTypes.arrayOf(PropTypes.object),
-  onEdit: PropTypes.func,
-  onAddBtnClick: PropTypes.func,
-}
+class Home extends Component {
+  static propTypes = {
+    user: PropTypes.object,
+    // library: PropTypes.arrayOf(PropTypes.object),
+    onEdit: PropTypes.func,
+    onAddBtnClick: PropTypes.func,
+    onArticleListItemClick: PropTypes.func,
+  }
 
-const Home = ({ library, onAddBtnClick, onArticleListItemClick, onEdit }) => {
-  let currentArticle
-
-  for (let i = 0; i < library.size; i++) {
-    const article = library.get(i)
-    if (article.get('isOpen')) {
-      currentArticle = article
+  constructor(props) {
+    super(props)
+    this.state = {
+      scrollPercentage: 0,
     }
   }
 
-  return (
-    <div className={styles.container}>
-      <ToolBar />
+  onEditorScroll = (event) => {
+    const { scrollHeight, scrollTop, offsetHeight } = event.target
+    this.setState({
+      scrollPercentage: scrollTop / (scrollHeight - offsetHeight),
+    })
+  }
 
-      <div className={styles.content}>
-        <Library
-          className={styles.library}
-          library={library}
-          onAddBtnClick={onAddBtnClick}
-          onArticleListItemClick={onArticleListItemClick}
-        />
+  render = () => {
+    const { library, onAddBtnClick, onArticleListItemClick, onEdit } = this.props
+    const { scrollPercentage } = this.state
 
-        <Editor className={styles.editor} onChange={onEdit} article={currentArticle} />
+    let currentArticle
 
-        <Preview className={styles.preview} article={currentArticle} />
+    for (let i = 0; i < library.size; i++) {
+      const article = library.get(i)
+      if (article.get('isOpen')) {
+        currentArticle = article
+      }
+    }
+
+    return (
+      <div className={styles.container}>
+        <ToolBar />
+
+        <div className={styles.content}>
+          <Library
+            className={styles.library}
+            library={library}
+            onAddBtnClick={onAddBtnClick}
+            onArticleListItemClick={onArticleListItemClick}
+          />
+
+          <Editor
+            className={styles.editor}
+            onChange={onEdit}
+            onScroll={this.onEditorScroll}
+            article={currentArticle}
+          />
+
+          <Preview
+            className={styles.preview}
+            article={currentArticle}
+            scrollPercentage={scrollPercentage}
+          />
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
-Home.propTypes = propTypes
 export default Home

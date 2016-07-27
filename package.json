@@ -2,6 +2,10 @@
   "name": "meditor",
   "version": "0.0.1",
   "description": "a markdown editor, use react, redux",
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot",
+    "build": "webpack"
+  },
   "dependencies": {
     "github-markdown-css": "^2.3.0",
     "immutable": "^3.8.1",
@@ -39,10 +43,6 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
-  },
-  "scripts": {
-    "start": "webpack-dev-server --inline --hot",
-    "build": "webpack"
   },
   "keywords": [
     "editor",

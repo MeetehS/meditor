@@ -24,6 +24,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  background-color: #fff;
 }
 
 .listView > li.active {

@@ -20,7 +20,8 @@ const propTypes = {
 const Preview = ({ className, article, ...other }) => (
   <div
     className={`markdown-body ${styles.wrapper} ${className}`}
-    dangerouslySetInnerHTML={{ __html: marked(article.get('content')) }}
+    dangerouslySetInnerHTML={{ __html: article ? marked(article.get('content')) : '' }}
+    {...other}
   />
 )
 

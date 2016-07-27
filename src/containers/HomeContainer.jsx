@@ -15,34 +15,32 @@ class HomeContainer extends Component {
     dispatch: PropTypes.func,
   }
 
-  componentDidMount = () => this.props.dispatch(getArticles(fromJS([{
-    id: 2,
-    title: 'Article2',
-    content: 'Article2',
-    created_at: '2016-07-26 15:58:00',
-    updated_at: '2016-07-26 15:58:00',
-    isOpen: false,
-  }, {
-    id: 3,
-    title: 'Article3',
-    content: 'Article3',
-    created_at: '2016-07-26 15:58:00',
-    updated_at: '2016-07-26 15:58:00',
-    isOpen: false,
-  }])))
+  componentDidMount = () => {
+    const { dispatch, library } = this.props
 
-  onAddBtnClick = () => this.props.dispatch(addArticle(fromJS({
-    id: Math.abs(Math.random() * 10000),
-    title: 'add title here',
-    content: 'add content here',
-    created_at: getyyyymmddhhMMss(new Date()),
-    updated_at: getyyyymmddhhMMss(new Date()),
-    isOpen: true,
-  })))
+    const storagedLibrary = JSON.parse(localStorage.getItem('library'))
+    if (storagedLibrary !== null) {
+      console.log('storagedLibrary is ', storagedLibrary)
+      this.props.dispatch(getArticles(fromJS(storagedLibrary)))
+    } else if (library.size === 0) {
+      dispatch(addArticle(fromJS(this.newArticle())))
+    }
+  }
+
+  onAddBtnClick = () => this.props.dispatch(addArticle(fromJS(this.newArticle())))
 
   onArticleListItemClick = (articleID) => this.props.dispatch(selectArticleListItem(articleID))
 
   onEdit = (event) => this.props.dispatch(changeEditorValue(event.target.value))
+
+  newArticle = () => ({
+    id: Math.abs(Math.random() * 10000),
+    title: 'write here',
+    content: 'write here',
+    created_at: getyyyymmddhhMMss(new Date()),
+    updated_at: getyyyymmddhhMMss(new Date()),
+    isOpen: true,
+  })
 
   render() {
     return (

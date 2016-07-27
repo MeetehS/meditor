@@ -8,33 +8,27 @@ import {
   CHANGE_EDITOR_VALUE,
 } from '../constants/actionTypes'
 
-const initialState = fromJS([{
-  id: 0,
-  title: 'Article0',
-  content: 'Article0',
-  created_at: '2016-07-26 15:58:00',
-  updated_at: '2016-07-26 15:58:00',
-  isOpen: true,
-}, {
-  id: 1,
-  title: 'Article1',
-  content: 'Article1',
-  created_at: '2016-07-26 15:58:00',
-  updated_at: '2016-07-26 15:58:00',
-  isOpen: false,
-}])
+const initialState = fromJS([])
 
 export default handleActions({
   [GET_ARTICLES]: (state, { payload }) => state.concat(payload),
   [ADD_ARTICLE]: (state, { payload }) => {
-    let newState
-    for (let i = 0; i < state.size; i++) {
-      if (state.getIn([i, 'isOpen'])) {
-        newState = state.setIn([i, 'isOpen'], false)
-        break
+    let newState = state
+    const articlesNum = state.size
+
+    if (articlesNum === 0) {
+      newState = state.push(payload)
+    } else {
+      for (let i = 0; i < state.size; i++) {
+        if (state.getIn([i, 'isOpen'])) {
+          newState = state.setIn([i, 'isOpen'], false).push(payload)
+          break
+        }
       }
     }
-    return newState.push(payload)
+
+    localStorage.setItem('library', JSON.stringify(newState.toJS()))
+    return newState
   },
   [SELECT_ARTICLE_LISTITEM]: (state, { payload }) => {
     // TODO: performance analysis
@@ -63,6 +57,8 @@ export default handleActions({
         break
       }
     }
+
+    localStorage.setItem('library', JSON.stringify(newState.toJS()))
     return newState
   },
 }, initialState)

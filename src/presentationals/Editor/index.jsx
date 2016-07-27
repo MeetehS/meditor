@@ -9,7 +9,7 @@ const propTypes = {
 const Editor = ({ className, article, ...other }) => (
   <textarea
     className={`${styles.wrapper} ${className}`}
-    value={article.get('content')}
+    value={article && article.get('content')}
     placeholder="Write here"
     autoFocus
     {...other}

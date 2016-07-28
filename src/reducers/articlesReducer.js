@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions'
 import { fromJS } from 'immutable'
 import { getFirstLine } from '../utils/string'
+import { getyyyymmddhhMMss } from '../utils/date'
 import {
   GET_ARTICLES,
   ADD_ARTICLE,
@@ -22,7 +23,7 @@ export default handleActions({
     } else {
       for (let i = 0; i < state.size; i++) {
         if (state.getIn([i, 'isOpen'])) {
-          newState = state.setIn([i, 'isOpen'], false).push(payload)
+          newState = state.setIn([i, 'isOpen'], false).unshift(payload)
           break
         }
       }
@@ -55,7 +56,11 @@ export default handleActions({
     let newState
     for (let i = 0; i < state.size; i++) {
       if (state.getIn([i, 'isOpen'])) {
-        newState = state.setIn([i, 'title'], title).setIn([i, 'content'], payload)
+        const article = state.get(i)
+                             .set('title', title)
+                             .set('content', payload)
+                             .set('updated_at', getyyyymmddhhMMss(new Date()))
+        newState = state.splice(i, 1).unshift(article)
         break
       }
     }

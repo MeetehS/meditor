@@ -2,7 +2,7 @@
   box-sizing: border-box;
   min-width: 200px;
   max-width: 980px;
-  padding: 10px;
+  padding: 15px;
   border-left: 1px solid #a9a9a9;
   overflow-y: auto;
 }

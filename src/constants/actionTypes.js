@@ -1,22 +1,22 @@
 export const GET_GITHUB_USER_BY_USERNAME = 'GET_GITHUB_USER_BY_USERNAME'
 
 /**
- * 获取所有文章
+ * get articles from storage
  */
 export const GET_ARTICLES = 'GET_ARTICLES'
 
 /**
- * 添加一篇文章
+ * add new article
  */
 export const ADD_ARTICLE = 'ADD_ARTICLE'
 
 /**
- * 切换文章
+ * select an article from library
  */
 export const SELECT_ARTICLE_LISTITEM = 'SELECT_ARTICLE_LISTITEM'
 
 /**
- * 修改编辑器的值
+ * change value of editor
  */
 export const CHANGE_EDITOR_VALUE = 'CHANGE_EDITOR_VALUE'
 
@@ -24,3 +24,18 @@ export const CHANGE_EDITOR_VALUE = 'CHANGE_EDITOR_VALUE'
  * append cmd to editor
  */
 export const APPEND_CMD = 'APPEND_CMD'
+
+/**
+ * close or open library
+ */
+export const TOGGLE_LIBRARY = 'TOGGLE_LIBRARY'
+
+/**
+ * close or open preview
+ */
+export const TOGGLE_PREVIEW = 'TOGGLE_PREVIEW'
+
+/**
+ * close or open toolbar
+ */
+export const TOGGLE_TOOLBAR = 'TOGGLE_TOOLBAR'

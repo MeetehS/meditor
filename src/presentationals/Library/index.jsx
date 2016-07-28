@@ -4,16 +4,24 @@ import styles from './index.css'
 
 const propTypes = {
   className: PropTypes.string,
-  // library: PropTypes.arrayOf(PropTypes.object),
+  // articles: PropTypes.arrayOf(PropTypes.object),
   onAddBtnClick: PropTypes.func,
+  onArticleListItemClick: PropTypes.func,
 }
 
-const Library = ({ className, library, onAddBtnClick, onArticleListItemClick, ...other }) => (
+const Library = ({
+  className,
+  articles,
+  library,
+  onAddBtnClick,
+  onArticleListItemClick,
+  ...other,
+}) => (library.get('isOpen') ? (
   <div className={`${styles.wrapper} ${className}`} {...other}>
     <SearchBar className={styles.searchBar} onAddBtnClick={onAddBtnClick} />
 
     <ol className={styles.listView}>
-      {library.map((article, index) => {
+      {articles.map((article, index) => {
         if (article.get('isOpen')) {
           return (
             <li
@@ -37,7 +45,7 @@ const Library = ({ className, library, onAddBtnClick, onArticleListItemClick, ..
       })}
     </ol>
   </div>
-)
+) : null)
 
 Library.propTypes = propTypes
 

@@ -16,25 +16,32 @@ marked.setOptions({
 class Preview extends Component {
   static propTypes = {
     className: PropTypes.string,
+    scrollPercentage: PropTypes.number,
   }
 
-  componentWillReceiveProps = nextProps => {
-    const wrapper = this.refs.wrapper
-    const { scrollHeight, offsetHeight } = wrapper
-    wrapper.scrollTop = nextProps.scrollPercentage * (scrollHeight - offsetHeight)
+  componentDidUpdate() {
+    const { preview, scrollPercentage } = this.props
+
+    if (preview.get('isOpen')) {
+      const wrapper = this.refs.wrapper
+      const { scrollHeight, offsetHeight } = wrapper
+      wrapper.scrollTop = scrollPercentage * (scrollHeight - offsetHeight)
+    }
   }
 
   render = () => {
-    const { className, article, scrollPercentage, ...other } = this.props
+    // get scrollPercentage to prevent to be prop of div
+    // TODO: issue ESLint by Airbnb
+    const { className, article, preview, scrollPercentage, ...other } = this.props
 
-    return (
+    return preview.get('isOpen') ? (
       <div
         ref="wrapper"
         className={`markdown-body ${styles.wrapper} ${className}`}
         dangerouslySetInnerHTML={{ __html: article ? marked(article.get('content')) : '' }}
         {...other}
       />
-    )
+    ) : null
   }
 }
 

@@ -3,5 +3,8 @@
   outline: none;
   padding: 10px;
   resize: none;
+  max-width: 980px;
+  margin: 0 auto;
   line-height: 1.5;
+  background-color: #F9FAF8;
 }

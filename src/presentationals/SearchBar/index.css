@@ -3,7 +3,7 @@
   align-items: center;
   box-sizing: border-box;
   height: 44px;
-  padding-left: 8px;
+  padding-left: 10px;
   background-color: rgba(250, 250, 250, .9);
   border-bottom: 1px solid #b2b2b2;
 }
@@ -20,7 +20,7 @@
 
 .addBtn {
   composes: toolBarBtn from '../ToolBar/index.css';
-  margin-right: 11px;
-  margin-left: 11px;
+  margin-right: 12px;
+  margin-left: 12px;
   background: no-repeat center url('../../imgs/add.png');
 }

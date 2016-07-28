@@ -10,11 +10,14 @@ import styles from './index.css'
 class Home extends Component {
   static propTypes = {
     user: PropTypes.object,
-    // library: PropTypes.arrayOf(PropTypes.object),
+    // articles: PropTypes.arrayOf(PropTypes.object),
     onEdit: PropTypes.func,
     onAddBtnClick: PropTypes.func,
     onArticleListItemClick: PropTypes.func,
     onToolBarBtnClick: PropTypes.func,
+    onLibraryToggle: PropTypes.func,
+    onPreviewToggle: PropTypes.func,
+    onToolBarToggle: PropTypes.func,
   }
 
   constructor(props) {
@@ -32,13 +35,25 @@ class Home extends Component {
   }
 
   render = () => {
-    const { library, onAddBtnClick, onArticleListItemClick, onEdit, onToolBarBtnClick } = this.props
+    const {
+      articles,
+      library,
+      preview,
+      toolbar,
+      onAddBtnClick,
+      onArticleListItemClick,
+      onEdit,
+      onToolBarBtnClick,
+      onLibraryToggle,
+      onPreviewToggle,
+      onToolBarToggle,
+    } = this.props
     const { scrollPercentage } = this.state
 
     let currentArticle
 
-    for (let i = 0; i < library.size; i++) {
-      const article = library.get(i)
+    for (let i = 0; i < articles.size; i++) {
+      const article = articles.get(i)
       if (article.get('isOpen')) {
         currentArticle = article
       }
@@ -46,11 +61,18 @@ class Home extends Component {
 
     return (
       <div className={styles.container}>
-        <ToolBar onToolBarBtnClick={onToolBarBtnClick} />
+        <ToolBar
+          toolbar={toolbar}
+          onToolBarBtnClick={onToolBarBtnClick}
+          onLibraryToggle={onLibraryToggle}
+          onPreviewToggle={onPreviewToggle}
+          onToolBarToggle={onToolBarToggle}
+        />
 
         <div className={styles.content}>
           <Library
             className={styles.library}
+            articles={articles}
             library={library}
             onAddBtnClick={onAddBtnClick}
             onArticleListItemClick={onArticleListItemClick}
@@ -64,6 +86,7 @@ class Home extends Component {
           />
 
           <Preview
+            preview={preview}
             className={styles.preview}
             article={currentArticle}
             scrollPercentage={scrollPercentage}

@@ -8,24 +8,33 @@ import {
   selectArticleListItem,
   changeEditorValue,
   appendCmd,
-} from '../actions/libraryActions'
+} from '../actions/articlesActions'
+import { toggleLibrary } from '../actions/libraryActions'
+import { togglePreview } from '../actions/previewActions'
+import { toggleToolBar } from '../actions/toolbarActions'
 import Home from '../presentationals/Home'
 
 class HomeContainer extends Component {
   static propTypes = {
     dispatch: PropTypes.func,
+    onKeyDown: PropTypes.func,
   }
 
-  componentDidMount = () => {
-    const { dispatch, library } = this.props
+  componentDidMount() {
+    const { dispatch, articles } = this.props
 
-    const storagedLibrary = JSON.parse(localStorage.getItem('library'))
-    if (storagedLibrary !== null) {
-      console.log('storagedLibrary is ', storagedLibrary)
-      this.props.dispatch(getArticles(fromJS(storagedLibrary)))
-    } else if (library.size === 0) {
+    const storagedArticles = JSON.parse(localStorage.getItem('articles'))
+    if (storagedArticles !== null) {
+      this.props.dispatch(getArticles(fromJS(storagedArticles)))
+    } else if (articles.size === 0) {
       dispatch(addArticle(fromJS(this.newArticle())))
     }
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        this.props.dispatch(toggleToolBar())
+      }
+    })
   }
 
   onAddBtnClick = () => this.props.dispatch(addArticle(fromJS(this.newArticle())))
@@ -35,6 +44,12 @@ class HomeContainer extends Component {
   onEdit = (event) => this.props.dispatch(changeEditorValue(event.target.value))
 
   onToolBarBtnClick = (cmd) => this.props.dispatch(appendCmd(fromJS(cmd)))
+
+  onLibraryToggle = () => this.props.dispatch(toggleLibrary())
+
+  onPreviewToggle = () => this.props.dispatch(togglePreview())
+
+  onToolBarToggle = () => this.props.dispatch(toggleToolBar())
 
   newArticle = () => ({
     id: Math.abs(Math.random() * 10000),
@@ -53,6 +68,9 @@ class HomeContainer extends Component {
         onArticleListItemClick={this.onArticleListItemClick}
         onEdit={this.onEdit}
         onToolBarBtnClick={this.onToolBarBtnClick}
+        onLibraryToggle={this.onLibraryToggle}
+        onPreviewToggle={this.onPreviewToggle}
+        onToolBarToggle={this.onToolBarToggle}
         {...this.props}
       />
     )
@@ -60,5 +78,8 @@ class HomeContainer extends Component {
 }
 
 export default connect((state) => ({
+  articles: state.get('articles'),
   library: state.get('library'),
+  preview: state.get('preview'),
+  toolbar: state.get('toolbar'),
 }))(HomeContainer)

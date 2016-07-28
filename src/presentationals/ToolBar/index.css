@@ -4,8 +4,7 @@
   height: 44px;
   padding-right: 10px;
   padding-left: 10px;
-  border-bottom: 1px solid #a9a9a9;
-  background-color: rgba(250, 250, 250, .9);
+  background-color: #443e3d;
 }
 
 .toolBarBtn {
@@ -14,26 +13,29 @@
   border: 0;
   padding: 3px 0 0;
   margin-right: 15px;
-  background: transparent;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
   outline: none;
+  color: #fff;
 }
 
-.showOrHideLibraryBtn {
+.toggleLibraryBtn {
   composes: toolBarBtn;
   margin-right: 246px;
-  background: no-repeat center url('../../imgs/show_or_hide_library.png');
+  background-image: url('../../imgs/show_or_hide_library.png');
 }
 
-.showOrHideToolBarBtn {
+.toggleToolBarBtn {
   composes: toolBarBtn;
   position: absolute;
   right: 49px;
-  background: no-repeat center url('../../imgs/show_or_hide_toolbar.png');
+  background-image: url('../../imgs/show_or_hide_toolbar.png');
 }
 
-.showOrHidePreviewBtn {
+.togglePreviewBtn {
   composes: toolBarBtn;
   position: absolute;
   right: 0;
-  background: no-repeat center url('../../imgs/show_or_hide_preview.png');
+  background-image: url('../../imgs/show_or_hide_preview.png');
 }

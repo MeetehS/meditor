@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import styles from './index.css'
-import PlusIcon from '../../imgs/icons/PlusIcon'
+import PlusIcon from '../../icons/PlusIcon'
 
 class SearchBar extends Component {
   static propTypes = {

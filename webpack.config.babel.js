@@ -48,8 +48,12 @@ const config = {
       test: /\.css$/,
       loader: 'style-loader!css-loader',
     }, {
-      include: path.resolve(__dirname, 'src'),
-      test: /\.(png|jpg|eot|svg|ttf|woff|woff2|otf)\??.*$/,
+      include: path.resolve(__dirname, 'src/icons/svgs'),
+      test: /\.svg$/,
+      loader: 'babel!svg-react',
+    }, {
+      include: path.resolve(__dirname, 'src/imgs'),
+      test: /\.(png|jpg|eot|ttf|woff|woff2|svg|otf)\??.*$/,
       loader: 'url-loader?limit=8192',
     }],
   },

@@ -10,7 +10,11 @@ markdown style is [github-markdown-css](https://github.com/sindresorhus/github-m
 npm start
 ```
 
-## Explain
+## Q&A
+### What is autosave? And how do you realized?
+1. Please read [Auto Save（自动保存）案例和情景分析](http://www.woshipm.com/pd/242913.html)。
+2. autosave after edit.
+
 ### Why don't add code button to toolbar?
 ToolBar is for those don't know Markdown, not developers.
 
@@ -20,7 +24,7 @@ ToolBar is for those don't know Markdown, not developers.
 - [x] sync scrolling
 - [x] article list
 - [x] live articles search
-- [x] autosave
+- [x] autosave after edit
 - [x] toolbar
 - [x] library toggle
 - [x] preview toggle
@@ -32,7 +36,7 @@ ToolBar is for those don't know Markdown, not developers.
 - add article list
 - add markdown parser
 - add live preview
-- add autosave
+- add autosave after edit
 
 ### v0.0.2
 - add sync scrolling

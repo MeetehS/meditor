@@ -1,6 +1,7 @@
 import path from 'path'
 import webpack from 'webpack'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
+import values from 'postcss-modules-values'
 
 const config = {
   devtool: '#source-map',
@@ -38,7 +39,7 @@ const config = {
     }, {
       include: path.resolve(__dirname, 'src'),
       test: /\.css$/,
-      loader: 'style-loader!css-loader?modules&localIdentName=[local]-[hash:base64:5]',
+      loader: 'style-loader!css-loader?modules&localIdentName=[local]-[hash:base64:5]!postcss-loader',
     }, {
       include: [
         path.resolve(__dirname, 'node_modules/normalize.css'),
@@ -56,6 +57,7 @@ const config = {
     new HTMLWebpackPlugin({ title: 'MEditor' }),
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
   ],
+  postcss: [values],
 }
 
 export default config

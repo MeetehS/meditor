@@ -5,6 +5,7 @@ import { getyyyymmddhhMMss } from '../utils/date'
 import {
   getArticles,
   addArticle,
+  searchArticles,
   selectArticleListItem,
   changeEditorValue,
   appendCmd,
@@ -12,6 +13,7 @@ import {
 import { toggleLibrary } from '../actions/libraryActions'
 import { togglePreview } from '../actions/previewActions'
 import { toggleToolBar } from '../actions/toolbarActions'
+import { changeSearchValue } from '../actions/searchActions'
 import Home from '../presentationals/Home'
 
 class HomeContainer extends Component {
@@ -51,6 +53,14 @@ class HomeContainer extends Component {
 
   onToolBarToggle = () => this.props.dispatch(toggleToolBar())
 
+  onSearchInputChange = (event) => {
+    const { dispatch } = this.props
+    const value = event.target.value
+
+    dispatch(changeSearchValue(value))
+    dispatch(searchArticles(value))
+  }
+
   newArticle = () => ({
     id: Math.abs(Math.random() * 10000),
     title: 'write here',
@@ -71,6 +81,7 @@ class HomeContainer extends Component {
         onLibraryToggle={this.onLibraryToggle}
         onPreviewToggle={this.onPreviewToggle}
         onToolBarToggle={this.onToolBarToggle}
+        onSearchInputChange={this.onSearchInputChange}
         {...this.props}
       />
     )
@@ -82,4 +93,5 @@ export default connect((state) => ({
   library: state.get('library'),
   preview: state.get('preview'),
   toolbar: state.get('toolbar'),
+  search: state.get('search'),
 }))(HomeContainer)

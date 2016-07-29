@@ -11,6 +11,16 @@ export const GET_ARTICLES = 'GET_ARTICLES'
 export const ADD_ARTICLE = 'ADD_ARTICLE'
 
 /**
+ * change value of search input
+ */
+export const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE'
+
+/**
+ * live search articles
+ */
+export const SEARCH_ARTICLES = 'SEARCH_ARTICLES'
+
+/**
  * select an article from library
  */
 export const SELECT_ARTICLE_LISTITEM = 'SELECT_ARTICLE_LISTITEM'

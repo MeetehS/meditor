@@ -18,6 +18,7 @@ class Home extends Component {
     onLibraryToggle: PropTypes.func,
     onPreviewToggle: PropTypes.func,
     onToolBarToggle: PropTypes.func,
+    onSearchInputChange: PropTypes.func,
   }
 
   constructor(props) {
@@ -40,6 +41,7 @@ class Home extends Component {
       library,
       preview,
       toolbar,
+      search,
       onAddBtnClick,
       onArticleListItemClick,
       onEdit,
@@ -47,6 +49,7 @@ class Home extends Component {
       onLibraryToggle,
       onPreviewToggle,
       onToolBarToggle,
+      onSearchInputChange,
     } = this.props
     const { scrollPercentage } = this.state
 
@@ -74,8 +77,10 @@ class Home extends Component {
             className={styles.library}
             articles={articles}
             library={library}
+            search={search}
             onAddBtnClick={onAddBtnClick}
             onArticleListItemClick={onArticleListItemClick}
+            onSearchInputChange={onSearchInputChange}
           />
 
           <Editor

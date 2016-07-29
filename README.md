@@ -10,12 +10,16 @@ markdown style is [github-markdown-css](https://github.com/sindresorhus/github-m
 npm start
 ```
 
+## Explain
+### Why don't add code button to toolbar?
+ToolBar is for those don't know Markdown, not developers.
+
 ## TODO
 - [x] markdown parser
 - [x] live preview
 - [x] sync scrolling
 - [x] article list
-- [ ] search article
+- [x] live articles search
 - [x] autosave
 - [x] toolbar
 - [x] library toggle
@@ -41,6 +45,5 @@ npm start
 - add preview toggle
 - add toolbar toggle: use toolbar toggle button or use key `esc`
 
-## Explain
-### Why don't add code button to toolbar?
-ToolBar is for those that don't know Markdown, not developers.
+### v0.0.5
+- add live articles search: just bring searched articles to front, the unsearched articles still in the end of library

@@ -1,6 +1,6 @@
 {
   "name": "meditor",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "a markdown editor, use react, redux",
   "scripts": {
     "start": "webpack-dev-server --inline --hot",

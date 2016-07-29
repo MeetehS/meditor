@@ -7,18 +7,26 @@ const propTypes = {
   // articles: PropTypes.arrayOf(PropTypes.object),
   onAddBtnClick: PropTypes.func,
   onArticleListItemClick: PropTypes.func,
+  onSearchInputChange: PropTypes.func,
 }
 
 const Library = ({
   className,
   articles,
   library,
+  search,
   onAddBtnClick,
   onArticleListItemClick,
+  onSearchInputChange,
   ...other,
 }) => (library.get('isOpen') ? (
   <div className={`${styles.wrapper} ${className}`} {...other}>
-    <SearchBar className={styles.searchBar} onAddBtnClick={onAddBtnClick} />
+    <SearchBar
+      className={styles.searchBar}
+      search={search}
+      onAddBtnClick={onAddBtnClick}
+      onSearchInputChange={onSearchInputChange}
+    />
 
     <ol className={styles.listView}>
       {articles.map((article, index) => {

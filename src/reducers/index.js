@@ -5,6 +5,7 @@ import articles from './articlesReducer'
 import library from './libraryReducer'
 import preview from './previewReducer'
 import toolbar from './toolbarReducer'
+import search from './searchReducer'
 
 const reducers = combineReducers({
   routing,
@@ -13,6 +14,7 @@ const reducers = combineReducers({
   library,
   preview,
   toolbar,
+  search,
 })
 
 export default reducers

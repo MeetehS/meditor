@@ -5,6 +5,7 @@ import { getyyyymmddhhMMss } from '../utils/date'
 import {
   GET_ARTICLES,
   ADD_ARTICLE,
+  SEARCH_ARTICLES,
   SELECT_ARTICLE_LISTITEM,
   CHANGE_EDITOR_VALUE,
   APPEND_CMD,
@@ -32,6 +33,9 @@ export default handleActions({
     localStorage.setItem('articles', JSON.stringify(newState.toJS()))
     return newState
   },
+  [SEARCH_ARTICLES]: (state, { payload }) => (
+    state.sort(article1 => (article1.get('title').search(payload) === -1 ? 1 : 0))
+  ),
   [SELECT_ARTICLE_LISTITEM]: (state, { payload }) => {
     // TODO: performance analysis
     let newState

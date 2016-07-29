@@ -4,14 +4,14 @@
   height: 44px;
   padding-right: 15px;
   padding-left: 15px;
-  background-color: #443e3d;
+  background-color: #f96456;
 }
 
 .toolBarBtn {
   min-width: 24px;
   height: 24px;
   border: 0;
-  padding: 3px 0 0;
+  padding: 0;
   margin-right: 15px;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -23,19 +23,16 @@
 .toggleLibraryBtn {
   composes: toolBarBtn;
   margin-right: 241px;
-  background-image: url('../../imgs/show_or_hide_library.png');
 }
 
 .toggleToolBarBtn {
   composes: toolBarBtn;
   position: absolute;
   right: 54px;
-  background-image: url('../../imgs/show_or_hide_toolbar.png');
 }
 
 .togglePreviewBtn {
   composes: toolBarBtn;
   position: absolute;
   right: 0;
-  background-image: url('../../imgs/show_or_hide_preview.png');
 }

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import styles from './index.css'
+import PlusIcon from '../../imgs/icons/PlusIcon'
 
 class SearchBar extends Component {
   static propTypes = {
@@ -15,7 +16,9 @@ class SearchBar extends Component {
     return (
       <div className={`${styles.wrapper} ${className}`} {...other}>
         <input placeholder="Search" value={search} onChange={onSearchInputChange} />
-        <button className={styles.addBtn} onClick={onAddBtnClick} />
+        <button className={styles.addBtn} onClick={onAddBtnClick}>
+          <PlusIcon />
+        </button>
       </div>
     )
   }

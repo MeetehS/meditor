@@ -4,8 +4,8 @@
   box-sizing: border-box;
   height: 44px;
   padding-left: 8px;
-  background-color: rgba(250, 250, 250, .9);
-  border-bottom: 1px solid #b2b2b2;
+  background-color: #faf9f9;
+  border-bottom: 1px solid #c8c7cc;
 }
 
 .wrapper > input {
@@ -22,5 +22,5 @@
   composes: toolBarBtn from '../ToolBar/index.css';
   margin-right: 12px;
   margin-left: 12px;
-  background: no-repeat center url('../../imgs/add.png');
+  /*background: no-repeat center url('../../imgs/add.png');*/
 }

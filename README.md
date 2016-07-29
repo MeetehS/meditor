@@ -47,3 +47,7 @@ ToolBar is for those don't know Markdown, not developers.
 
 ### v0.0.5
 - add live articles search: just bring searched articles to front, the unsearched articles still in the end of library
+
+### v0.0.6
+- a new red ui
+- replace all pngs to svgs

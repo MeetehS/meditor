@@ -147,31 +147,35 @@ const Toolbar = ({
   ...other,
 }) => (isHidden ? null : (
   <div className={`${styles.wrapper} ${className}`} {...other}>
-    <button className={styles.toggleLibraryBtn} onClick={onLibraryToggle}>
-      <LeftToggleIcon />
-    </button>
+    <div>
+      <button className={styles.toggleLibraryBtn} onClick={onLibraryToggle}>
+        <LeftToggleIcon />
+      </button>
 
-    {toolbarBtns.map((btn, index) => {
-      const { icon, title } = btn
+      {toolbarBtns.map((btn, index) => {
+        const { icon, title } = btn
 
-      return (
-        <button
-          key={index}
-          className={styles.toolbarBtn}
-          title={title}
-          onClick={() => onCmdBtnClick(btn.cmd)}
-        >
-          {icon}
-        </button>
-      )
-    })}
+        return (
+          <button
+            key={index}
+            className={styles.toolbarBtn}
+            title={title}
+            onClick={() => onCmdBtnClick(btn.cmd)}
+          >
+            {icon}
+          </button>
+        )
+      })}
+    </div>
 
-    <button className={styles.toggleToolbarBtn} onClick={onToolbarToggle}>
-      <TopToggleIcon />
-    </button>
-    <button className={styles.togglePreviewBtn} onClick={onPreviewToggle}>
-      <RightToggleIcon />
-    </button>
+    <div>
+      <button className={styles.toggleToolbarBtn} onClick={onToolbarToggle}>
+        <TopToggleIcon />
+      </button>
+      <button className={styles.togglePreviewBtn} onClick={onPreviewToggle}>
+        <RightToggleIcon />
+      </button>
+    </div>
   </div>
 ))
 

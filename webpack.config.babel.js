@@ -1,6 +1,7 @@
 import path from 'path'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
 import values from 'postcss-modules-values'
+import autoprefixer from 'autoprefixer'
 
 const config = {
   devtool: '#source-map',
@@ -43,7 +44,7 @@ const config = {
   plugins: [
     new HTMLWebpackPlugin({ title: 'MEditor' }),
   ],
-  postcss: [values],
+  postcss: [values, autoprefixer],
 }
 
 export default config

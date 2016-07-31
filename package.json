@@ -8,6 +8,7 @@
     "build": "npm run webpack-prod"
   },
   "dependencies": {
+    "balloon-css": "^0.3.0",
     "github-markdown-css": "^2.3.0",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",

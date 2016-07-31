@@ -7,6 +7,8 @@ import LibraryContainer from '../LibraryContainer'
 import EditorContainer from '../EditorContainer'
 import PreviewContainer from '../PreviewContainer'
 
+import { toggleLibraryAction } from '../../actions/libraryActions'
+import { togglePreviewAction } from '../../actions/previewActions'
 import { toggleToolbarAction } from '../../actions/toolbarActions'
 
 import styles from './index.css'
@@ -20,9 +22,22 @@ class App extends Component {
   componentDidMount() {
     const { dispatch } = this.props
 
-    window.addEventListener('keydown', event => {
-      if (event.charCode === 0) {
-        dispatch(toggleToolbarAction())
+    window.addEventListener('keypress', event => {
+      const { altKey, keyCode } = event
+      if (altKey) {
+        switch (keyCode) {
+          case 172:
+            dispatch(toggleLibraryAction())
+            break
+          case 8224:
+            dispatch(toggleToolbarAction())
+            break
+          case 960:
+            dispatch(togglePreviewAction())
+            break
+          default:
+            break
+        }
       }
     })
   }

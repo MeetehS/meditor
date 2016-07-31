@@ -5,6 +5,9 @@ markdown parser is [marked](https://github.com/chjj/marked)
 
 markdown style is [github-markdown-css](https://github.com/sindresorhus/github-markdown-css)
 
+[Demo](https://zhiquan-yu.github.io/meditor/)
+<iframe src="https://zhiquan-yu.github.io/meditor" width="100%" height="100%" />
+
 ## Design
 1. Evertime when user go to the editor, it should be in the new article state, if user input, add a
 new article automatically, rather than open an old article, because this is a editor, user just want
@@ -66,3 +69,6 @@ common functions.
 ### v0.0.6
 - a new red ui
 - replace all pngs to svgs
+
+I used flex with prefix, so
+<iframe src="http://caniuse.com/#feat=flexbox" width="100%" height="100%" />

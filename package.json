@@ -1,6 +1,6 @@
 {
   "name": "meditor",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "a markdown editor, use react, redux",
   "scripts": {
     "webpack-prod": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js --progress --colors",

@@ -5,10 +5,11 @@ markdown parser is [marked](https://github.com/chjj/marked)
 
 markdown style is [github-markdown-css](https://github.com/sindresorhus/github-markdown-css)
 
-## run
-```
-npm start
-```
+## Design
+1. Evertime when user go to the editor, it should be in the new article state, if user input, add a
+new article automatically, rather than open an old article, because this is a editor, user just want
+to write a new article, save to localStorage is just a functionality to save user's job when some
+accident happen, such as close the tab or browser crashed.
 
 ## Q&A
 ### What is autosave? And how do you realized?
@@ -21,14 +22,24 @@ ToolBar is for those don't know Markdown, not developers.
 ## TODO
 - [x] markdown parser
 - [x] live preview
-- [x] sync scrolling
+- [x] sync scrolling: by percentage.
+
+[左右区域的同步滚动在Markdown中有多张图片时严重错位](https://github.com/pandao/editor.md/issues/56)，the following two todos is my solution:
+
+- [ ] sync scrolling: by heading
+- [ ] sync scrolling: by content
 - [x] article list
 - [x] live articles search
-- [x] autosave after edit
+- [x] autosave after edit(localStorage)
 - [x] toolbar
 - [x] library toggle
 - [x] preview toggle
 - [x] toolbar toggle
+
+## Develop
+1. Use the immutable only in reducers.
+2. user name + Action to name action, such as getArticlesAction, to difference between actions and
+common functions.
 
 ## CHANGELOG
 ### v0.0.1

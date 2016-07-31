@@ -1,27 +1,30 @@
-import React, { Component, PropTypes } from 'react'
-import styles from './index.css'
+import React, { PropTypes } from 'react'
 import PlusIcon from '../../icons/PlusIcon'
 
-class SearchBar extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    search: PropTypes.string,
-    onAddBtnClick: PropTypes.func,
-    onSearchInputChange: PropTypes.func,
-  }
+import styles from './index.css'
 
-  render = () => {
-    const { className, search, onAddBtnClick, onSearchInputChange, ...other } = this.props
-
-    return (
-      <div className={`${styles.wrapper} ${className}`} {...other}>
-        <input placeholder="Search" value={search} onChange={onSearchInputChange} />
-        <button className={styles.addBtn} onClick={onAddBtnClick}>
-          <PlusIcon />
-        </button>
-      </div>
-    )
-  }
+const propTypes = {
+  className: PropTypes.string,
+  text: PropTypes.string,
+  onAddBtnClick: PropTypes.func,
+  onSearch: PropTypes.func,
 }
+
+const SearchBar = ({
+  className,
+  text,
+  onAddBtnClick,
+  onSearch,
+  ...other,
+}) => (
+  <div className={`${styles.wrapper} ${className}`} {...other}>
+    <input placeholder="Search" value={text} onChange={event => onSearch(event.target.value)} />
+    <button className={styles.addBtn} onClick={onAddBtnClick}>
+      <PlusIcon />
+    </button>
+  </div>
+)
+
+SearchBar.propTypes = propTypes
 
 export default SearchBar

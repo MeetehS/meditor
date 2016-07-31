@@ -1,43 +1,40 @@
 import React, { Component, PropTypes } from 'react'
-import { fromJS } from 'immutable'
+import ImmutablePropTypes from 'react-immutable-proptypes'
+
 import styles from './index.css'
 
 class Editor extends Component {
   static propTypes = {
     className: PropTypes.string,
-    // article: PropTypes.object,
+    article: ImmutablePropTypes.map,
+    onChangeText: PropTypes.func,
+    onScroll: PropTypes.func,
+    getEditor: PropTypes.func,
+    onFinishCmd: PropTypes.func,
   }
 
-  componentWillUpdate = () => {
-    const textarea = this.refs.textarea
-
-    this.selectionStart = textarea.selectionStart
+  componentDidMount() {
+    global.editor = this.refs.textarea
   }
 
   componentDidUpdate() {
-    const { article } = this.props
-    if (article.get('id') !== this.articleID) {
-      this.cmdsLen = 0
-      this.articleID = article.get('id')
-      return
-    }
-    const cmds = article.get('cmds')
     const textarea = this.refs.textarea
-    console.info('cmds is ', cmds)
-    const cmdsLen = cmds.size
-    console.info('cmdsLen is ', cmdsLen)
-    console.info('this.cmdsLen is ', this.cmdsLen)
-    // 通过比较 cmdsLen 来判断是否是新命令
-    if (cmdsLen > this.cmdsLen) {
-      this.cmdsLen = cmdsLen
-      const latestCmd = cmds.get(cmdsLen - 1)
-      console.info('latestCmd is ', latestCmd)
-      console.info('selectionStart is ', latestCmd.getIn(['selectionRange', 0]))
-      console.info('selectionEnd is ', latestCmd.getIn(['selectionRange', 1]))
-      textarea.setSelectionRange(this.selectionStart + latestCmd.getIn(['selectionRange', 0]),
-        this.selectionStart + latestCmd.getIn(['selectionRange', 1]))
+    const { article, onFinishCmd } = this.props
+    const { cmd } = article.toJS()
+    if (cmd) {
+      const { selectionStart, selectionRange } = cmd
+      onFinishCmd()
+
+      textarea.setSelectionRange(selectionStart + selectionRange[0],
+        selectionStart + selectionRange[1])
       textarea.focus()
     }
+  }
+
+  onScroll = event => {
+    const { scrollHeight, scrollTop, offsetHeight } = event.target
+    const scrollPercentage = scrollTop / (scrollHeight - offsetHeight)
+    this.props.onScroll(scrollPercentage)
   }
 
   selectionStart = 0
@@ -45,7 +42,7 @@ class Editor extends Component {
   cmdsLen = 0
 
   render() {
-    const { className, article, ...other } = this.props
+    const { className, article, onChangeText, onScroll, onFinishCmd, ...other } = this.props
 
     return (
       <textarea
@@ -53,7 +50,8 @@ class Editor extends Component {
         className={`${styles.wrapper} ${className}`}
         value={article && article.get('content')}
         placeholder="Write here"
-        // autoFocus
+        onChange={e => onChangeText(e.target.value)}
+        onScroll={this.onScroll}
         {...other}
       />
     )

@@ -3,9 +3,9 @@ import { fromJS } from 'immutable'
 import { TOGGLE_PREVIEW } from '../constants/actionTypes'
 
 const initialState = fromJS({
-  isOpen: true,
+  isHidden: false,
 })
 
 export default handleActions({
-  [TOGGLE_PREVIEW]: state => state.set('isOpen', !state.get('isOpen')),
+  [TOGGLE_PREVIEW]: state => state.set('isHidden', !state.get('isHidden')),
 }, initialState)

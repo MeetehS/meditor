@@ -10,7 +10,7 @@
   background-color: baseColor;
 }
 
-.toolBarBtn {
+.toolbarBtn {
   min-width: 24px;
   height: 24px;
   border: 0;
@@ -23,18 +23,18 @@
 }
 
 .toggleLibraryBtn {
-  composes: toolBarBtn;
+  composes: toolbarBtn;
   margin-right: 241px;
 }
 
-.toggleToolBarBtn {
-  composes: toolBarBtn;
+.toggleToolbarBtn {
+  composes: toolbarBtn;
   position: absolute;
   right: 54px;
 }
 
 .togglePreviewBtn {
-  composes: toolBarBtn;
+  composes: toolbarBtn;
   position: absolute;
   right: 0;
 }

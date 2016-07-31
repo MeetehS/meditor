@@ -1,60 +1,65 @@
 import React, { PropTypes } from 'react'
+import ImmutablePropTypes from 'react-immutable-proptypes'
+
 import SearchBar from '../SearchBar'
+
 import styles from './index.css'
 
 const propTypes = {
   className: PropTypes.string,
-  // articles: PropTypes.arrayOf(PropTypes.object),
+  isHidden: PropTypes.bool,
+  articles: ImmutablePropTypes.listOf(ImmutablePropTypes.map),
+  currentArticle: ImmutablePropTypes.map,
+  searchText: PropTypes.string,
+  searchArticles: ImmutablePropTypes.listOf(ImmutablePropTypes.map),
   onAddBtnClick: PropTypes.func,
   onArticleListItemClick: PropTypes.func,
-  onSearchInputChange: PropTypes.func,
+  onSearch: PropTypes.func,
+  onArticleSelect: PropTypes.func,
+}
+
+const defaultProps = {
+  isHidden: false,
 }
 
 const Library = ({
   className,
+  isHidden,
   articles,
-  library,
-  search,
+  currentArticle,
+  searchText,
+  searchArticles,
   onAddBtnClick,
-  onArticleListItemClick,
-  onSearchInputChange,
+  onArticleSelect,
+  onSearch,
   ...other,
-}) => (library.get('isOpen') ? (
-  <div className={`${styles.wrapper} ${className}`} {...other}>
-    <SearchBar
-      className={styles.searchBar}
-      search={search}
-      onAddBtnClick={onAddBtnClick}
-      onSearchInputChange={onSearchInputChange}
-    />
+}) => {
+  const onClick = articleID => onArticleSelect(articleID)
 
-    <ol className={styles.listView}>
-      {articles.map((article, index) => {
-        if (article.get('isOpen')) {
-          return (
-            <li
-              key={index}
-              className={styles.active}
-              onClick={() => onArticleListItemClick(article.get('id'))}
-            >
-              {article.get('title')}
-            </li>
-          )
-        }
+  return (isHidden ? null : (
+    <div {...other} className={`${styles.wrapper} ${className}`}>
+      <SearchBar
+        text={searchText}
+        onSearch={onSearch}
+        onAddBtnClick={onAddBtnClick}
+      />
 
-        return (
+      <ol className={styles.listView}>
+        {articles.map((article, index) => (
           <li
             key={index}
-            onClick={() => onArticleListItemClick(article.get('id'))}
+            className={article.get('id') === currentArticle.get('id') && styles.active}
+            onClick={() => onClick(article.get('id'))}
           >
             {article.get('title')}
           </li>
-        )
-      })}
-    </ol>
-  </div>
-) : null)
+        ))}
+      </ol>
+    </div>
+  ))
+}
 
 Library.propTypes = propTypes
+Library.defaultProps = defaultProps
 
 export default Library

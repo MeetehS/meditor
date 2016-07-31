@@ -20,8 +20,8 @@ class App extends Component {
   componentDidMount() {
     const { dispatch } = this.props
 
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
+    window.addEventListener('keydown', event => {
+      if (event.charCode === 0) {
         dispatch(toggleToolbarAction())
       }
     })

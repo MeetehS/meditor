@@ -42,7 +42,10 @@ const config = {
     }],
   },
   plugins: [
-    new HTMLWebpackPlugin({ title: 'MEditor' }),
+    new HTMLWebpackPlugin({
+      title: 'MEditor',
+      favicon: './src/icons/favicon/favicon.ico',
+    }),
   ],
   postcss: [values, autoprefixer],
 }

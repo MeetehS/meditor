@@ -1,0 +1,13 @@
+@value palettes: '../palettes.css';
+@value editorBgColor from palettes;
+
+.wrapper {
+  border: 0;
+  outline: none;
+  padding: 15px;
+  resize: none;
+  max-width: 816px;
+  margin: 0 auto;
+  line-height: 1.5;
+  background-color: editorBgColor;
+}

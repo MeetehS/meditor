@@ -1,0 +1,40 @@
+@value palettes: '../palettes.css';
+@value baseColor from palettes;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding-right: 15px;
+  padding-left: 15px;
+  background-color: baseColor;
+}
+
+.toolbarBtn {
+  min-width: 24px;
+  height: 24px;
+  border: 0;
+  padding: 0;
+  margin-right: 15px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  outline: none;
+}
+
+.toggleLibraryBtn {
+  composes: toolbarBtn;
+  margin-right: 241px;
+}
+
+.toggleToolbarBtn {
+  composes: toolbarBtn;
+  position: absolute;
+  right: 54px;
+}
+
+.togglePreviewBtn {
+  composes: toolbarBtn;
+  position: absolute;
+  right: 0;
+}

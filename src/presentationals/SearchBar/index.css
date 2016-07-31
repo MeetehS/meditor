@@ -1,0 +1,28 @@
+@value palettes: '../palettes.css';
+@value baseColor, lightGray, borderColor from palettes;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 44px;
+  padding-left: 8px;
+  background-color: lightGray;
+  border-bottom: 1px solid borderColor;
+}
+
+.wrapper > input {
+  flex: 1;
+  height: 30px;
+  border: 0;
+  border-radius: 4px;
+  text-align: center;
+  background-color: rgba(3, 3, 3, .09);
+  outline: none;
+}
+
+.addBtn {
+  composes: toolbarBtn from '../ToolBar/index.css';
+  margin-right: 12px;
+  margin-left: 12px;
+}

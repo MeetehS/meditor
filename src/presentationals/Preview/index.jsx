@@ -3,17 +3,6 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import marked from 'marked'
 import styles from './index.css'
 
-marked.setOptions({
-  renderer: new marked.Renderer(),
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: true,
-  smartLists: true,
-  smartypants: false,
-})
-
 class Preview extends Component {
   static propTypes = {
     className: PropTypes.string,

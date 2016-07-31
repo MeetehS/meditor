@@ -29,7 +29,10 @@ const config = {
   resolve,
   module,
   plugins: [
-    new HTMLWebpackPlugin({ title: 'MEditor' }),
+    new HTMLWebpackPlugin({
+      title: 'MEditor',
+      favicon: './src/icons/favicon/favicon.ico',
+    }),
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },

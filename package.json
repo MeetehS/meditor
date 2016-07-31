@@ -1,6 +1,6 @@
 {
   "name": "meditor",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "a markdown editor, use react, redux",
   "scripts": {
     "webpack-prod": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js --progress --colors",
@@ -8,6 +8,7 @@
     "build": "npm run webpack-prod"
   },
   "dependencies": {
+    "balloon-css": "^0.3.0",
     "github-markdown-css": "^2.3.0",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",

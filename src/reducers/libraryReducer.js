@@ -85,7 +85,7 @@ export default handleActions({
 
   [SEARCH_ARTICLES]: (state, { payload }) => (
     state.set('searchText', payload).set('searchArticles',
-      state.get('articles').filter(article => (article.get('title').search(payload) !== -1)))
+      state.get('articles').filter(article => (article.get('content').search(payload) !== -1)))
   ),
 
   [TOGGLE_LIBRARY]: state => state.set('isHidden', !state.get('isHidden')),

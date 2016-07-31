@@ -49,7 +49,7 @@ class Editor extends Component {
         ref="textarea"
         className={`${styles.wrapper} ${className}`}
         value={article && article.get('content')}
-        placeholder="Write here"
+        placeholder="Enjoy..."
         onChange={e => onChangeText(e.target.value)}
         onScroll={this.onScroll}
         {...other}

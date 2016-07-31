@@ -28,6 +28,7 @@ const config = {
       include: [
         path.resolve(__dirname, 'node_modules/normalize.css'),
         path.resolve(__dirname, 'node_modules/github-markdown-css'),
+        path.resolve(__dirname, 'node_modules/balloon-css'),
       ],
       test: /\.css$/,
       loader: 'style-loader!css-loader',
@@ -42,7 +43,10 @@ const config = {
     }],
   },
   plugins: [
-    new HTMLWebpackPlugin({ title: 'MEditor' }),
+    new HTMLWebpackPlugin({
+      title: 'MEditor',
+      favicon: './src/icons/favicon/favicon.ico',
+    }),
   ],
   postcss: [values, autoprefixer],
 }

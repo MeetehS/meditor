@@ -6,6 +6,7 @@ import configureStore from './store'
 
 import 'normalize.css/normalize.css'
 import 'github-markdown-css/github-markdown.css'
+import 'balloon-css/balloon.min.css'
 
 import App from './containers/App'
 

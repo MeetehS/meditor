@@ -4,21 +4,36 @@ import { connect } from 'react-redux'
 
 import Toolbar from '../../presentationals/Toolbar'
 
-import { addCmdAction, toggleLibraryAction } from '../../actions/libraryActions'
 import { togglePreviewAction } from '../../actions/previewActions'
 import { toggleToolbarAction } from '../../actions/toolbarActions'
+import {
+  addArticleAction,
+  selectArticleAction,
+  addCmdAction,
+  toggleLibraryAction,
+} from '../../actions/libraryActions'
+
+import { newArticle } from '../../utils/article'
 
 class ToolbarContainer extends Component {
   static propTypes = {
     dispatch: PropTypes.func,
     toolbarState: ImmutablePropTypes.map,
+    libraryState: ImmutablePropTypes.map,
   }
 
   onCmdBtnClick = cmd => {
-    const { dispatch, editorState } = this.props
+    const { dispatch, libraryState } = this.props
+    const currentArticle = libraryState.get('currentArticle')
     const selectionStart = global.editor.selectionStart
     const newCmd = cmd
     newCmd.selectionStart = selectionStart
+
+    if (currentArticle.size === 0) {
+      const article = newArticle()
+      dispatch(addArticleAction(article))
+      dispatch(selectArticleAction(article.id))
+    }
     dispatch(addCmdAction(newCmd))
   }
 
@@ -47,5 +62,5 @@ class ToolbarContainer extends Component {
 
 export default connect((state) => ({
   toolbarState: state.get('toolbarState'),
-  editorState: state.get('editorState'),
+  libraryState: state.get('libraryState'),
 }))(ToolbarContainer)

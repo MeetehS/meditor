@@ -27,7 +27,7 @@ const RightToggleIcon = ({ ...other }) => (
         <use xlinkHref="#path-1"></use>
       </mask>
     </defs>
-    <g id="Icons" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd">
+    <g id="Icons" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g id="RightToggle">
         <use id="Body" stroke="#FFFFFF" mask="url(#mask-2)" strokeWidth="4" xlinkHref="#path-1" />
         <rect id="Right" fill="#FFFFFF" x="18" y="8" width="2" height="8"></rect>

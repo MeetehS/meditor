@@ -1,28 +1,20 @@
 import React, { Component, PropTypes } from 'react'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 import marked from 'marked'
 import styles from './index.css'
-
-marked.setOptions({
-  renderer: new marked.Renderer(),
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: true,
-  smartLists: true,
-  smartypants: false,
-})
 
 class Preview extends Component {
   static propTypes = {
     className: PropTypes.string,
+    isHidden: PropTypes.bool,
+    article: ImmutablePropTypes.map,
     scrollPercentage: PropTypes.number,
   }
 
   componentDidUpdate() {
-    const { preview, scrollPercentage } = this.props
+    const { isHidden, scrollPercentage } = this.props
 
-    if (preview.get('isOpen')) {
+    if (!isHidden) {
       const wrapper = this.refs.wrapper
       const { scrollHeight, offsetHeight } = wrapper
       wrapper.scrollTop = scrollPercentage * (scrollHeight - offsetHeight)
@@ -32,16 +24,16 @@ class Preview extends Component {
   render = () => {
     // get scrollPercentage to prevent to be prop of div
     // TODO: issue ESLint by Airbnb
-    const { className, article, preview, scrollPercentage, ...other } = this.props
+    const { className, isHidden, article, scrollPercentage, ...other } = this.props
 
-    return preview.get('isOpen') ? (
+    return isHidden ? null : (
       <div
         ref="wrapper"
         className={`markdown-body ${styles.wrapper} ${className}`}
-        dangerouslySetInnerHTML={{ __html: article ? marked(article.get('content')) : '' }}
+        dangerouslySetInnerHTML={{ __html: article.size > 0 ? marked(article.get('content')) : '' }}
         {...other}
       />
-    ) : null
+    )
   }
 }
 

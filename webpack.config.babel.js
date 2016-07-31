@@ -1,31 +1,15 @@
 import path from 'path'
-import webpack from 'webpack'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
 import values from 'postcss-modules-values'
+import autoprefixer from 'autoprefixer'
 
 const config = {
   devtool: '#source-map',
   entry: {
-    home: ['babel-polyfill', './src/index.jsx'],
-    vendor: [
-      'github-markdown-css',
-      'immutable',
-      'isomorphic-fetch',
-      'marked',
-      'normalize.css',
-      'react',
-      'react-css-modules',
-      'react-dom',
-      'react-redux',
-      'react-router',
-      'react-router-redux',
-      'redux',
-      'redux-actions',
-      'redux-immutable',
-      'redux-promise',
-    ],
+    home: ['./src/index.jsx'],
   },
   output: {
+    path: path.resolve(__dirname),
     filename: '[name].bundle.js',
   },
   resolve: {
@@ -59,9 +43,8 @@ const config = {
   },
   plugins: [
     new HTMLWebpackPlugin({ title: 'MEditor' }),
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
   ],
-  postcss: [values],
+  postcss: [values, autoprefixer],
 }
 
 export default config

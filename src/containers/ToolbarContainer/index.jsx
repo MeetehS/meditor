@@ -44,7 +44,9 @@ class ToolbarContainer extends Component {
   onToolbarToggle = () => this.props.dispatch(toggleToolbarAction())
 
   render() {
-    const { dispatch, toolbarState, ...other } = this.props
+    const props = { ...this.props }
+    delete props.dispatch
+    const { toolbarState, ...other } = props
     const isHidden = toolbarState.get('isHidden')
 
     return (

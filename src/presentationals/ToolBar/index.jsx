@@ -146,7 +146,7 @@ const Toolbar = ({
       {toolbarBtns.map((btn, index) => {
         const { icon, cmd } = btn
         const { content } = cmd
-        
+
         return (
           <button
             key={index}

@@ -13,7 +13,9 @@ class PreviewContainer extends Component {
   }
 
   render() {
-    const { dispatch, previewState, libraryState, editorState, ...other } = this.props
+    const props = { ...this.props }
+    delete props.dispatch
+    const { previewState, libraryState, editorState, ...other } = props
     const isHidden = previewState.get('isHidden')
     const currentArticle = libraryState.get('currentArticle')
     const scrollPercentage = editorState.get('scrollPercentage')

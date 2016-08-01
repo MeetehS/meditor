@@ -28,7 +28,6 @@ const Library = ({
   articles,
   currentArticle,
   searchText,
-  searchArticles,
   onAddBtnClick,
   onArticleSelect,
   onSearch,

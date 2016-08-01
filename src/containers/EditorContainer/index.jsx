@@ -37,7 +37,9 @@ class EditorContainer extends Component {
   onScroll = percentage => this.props.dispatch(scrollEditorAction(percentage))
 
   render() {
-    const { dispatch, libraryState, ...other } = this.props
+    const props = { ...this.props }
+    delete props.dispatch
+    const { libraryState, ...other } = props
     const currentArticle = libraryState.get('currentArticle')
 
     return (

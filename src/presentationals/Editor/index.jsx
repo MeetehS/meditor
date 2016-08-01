@@ -37,22 +37,21 @@ class Editor extends Component {
     this.props.onScroll(scrollPercentage)
   }
 
-  selectionStart = 0
-  articleID = -1
-  cmdsLen = 0
-
   render() {
-    const { className, article, onChangeText, onScroll, onFinishCmd, ...other } = this.props
+    const props = { ...this.props }
+    delete props.onScroll
+    delete props.onFinishCmd
+    const { className, article, onChangeText, ...other } = props
 
     return (
       <textarea
+        {...other}
         ref="textarea"
         className={`${styles.wrapper} ${className}`}
         value={article && article.get('content')}
         placeholder="Enjoy..."
         onChange={e => onChangeText(e.target.value)}
         onScroll={this.onScroll}
-        {...other}
       />
     )
   }

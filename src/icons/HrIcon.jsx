@@ -13,7 +13,6 @@ const defaultProps = {
 const HrIcon = ({ fill, ...other }) => (
   <svg
     version="1.1"
-    
     viewBox="0 0 24 24"
     {...other}
   >

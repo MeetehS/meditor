@@ -68,7 +68,7 @@ const toolbarBtns = [{
 }, {
   name: 'Hr',
   cmd: {
-    content: '---',
+    content: '------',
     selectionRange: [3, 3],
   },
   icon: <HrIcon />,
@@ -146,7 +146,7 @@ const Toolbar = ({
       {toolbarBtns.map((btn, index) => {
         const { icon, cmd } = btn
         const { content } = cmd
-        
+
         return (
           <button
             key={index}

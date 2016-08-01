@@ -3,7 +3,7 @@ import HTMLWebpackPlugin from 'html-webpack-plugin'
 
 import devConfig from './webpack.config.babel'
 
-const { entry, output, resolve, module, postcss } = devConfig
+const { entry, output, resolve, module, plugins, postcss } = devConfig
 const { home } = entry
 
 const config = {
@@ -28,11 +28,7 @@ const config = {
   output,
   resolve,
   module,
-  plugins: [
-    new HTMLWebpackPlugin({
-      title: 'MEditor',
-      favicon: './src/icons/favicon/favicon.ico',
-    }),
+  plugins: [...plugins, ...[
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },
@@ -40,7 +36,7 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"',
     }),
-  ],
+  ]],
   postcss,
 }
 

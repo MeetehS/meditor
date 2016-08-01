@@ -6,10 +6,10 @@ import autoprefixer from 'autoprefixer'
 const config = {
   devtool: '#source-map',
   entry: {
-    home: ['./src/index.jsx'],
+    home: './src/index.jsx',
   },
   output: {
-    path: path.resolve(__dirname),
+    path: __dirname,
     filename: '[name].bundle.js',
   },
   resolve: {
@@ -23,7 +23,11 @@ const config = {
     }, {
       include: path.resolve(__dirname, 'src'),
       test: /\.css$/,
-      loader: 'style-loader!css-loader?modules&localIdentName=[local]-[hash:base64:5]!postcss-loader',
+      loaders: [
+        'style-loader',
+        'css-loader?modules&localIdentName=[local]-[hash:base64:5]',
+        'postcss-loader',
+      ],
     }, {
       include: [
         path.resolve(__dirname, 'node_modules/normalize.css'),
@@ -31,11 +35,11 @@ const config = {
         path.resolve(__dirname, 'node_modules/balloon-css'),
       ],
       test: /\.css$/,
-      loader: 'style-loader!css-loader',
+      loaders: ['style-loader', 'css-loader'],
     }, {
       include: path.resolve(__dirname, 'src/icons/svgs'),
       test: /\.svg$/,
-      loader: 'babel!svg-react',
+      loaders: ['babel', 'svg-react'],
     }, {
       include: path.resolve(__dirname, 'src/imgs'),
       test: /\.(png|jpg|eot|ttf|woff|woff2|svg|otf)\??.*$/,

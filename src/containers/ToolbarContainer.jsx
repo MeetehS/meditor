@@ -12,6 +12,7 @@ import {
   addCmdAction,
   toggleLibraryAction,
 } from '../actions/libraryActions'
+import { setEditorFocusedAction } from '../actions/editorActions'
 
 import { newArticle } from '../utils/article'
 
@@ -33,6 +34,7 @@ class ToolbarContainer extends Component {
       const article = newArticle()
       dispatch(addArticleAction(article))
       dispatch(selectArticleAction(article.id))
+      dispatch(setEditorFocusedAction(true))
     }
     dispatch(addCmdAction(newCmd))
   }

@@ -8,6 +8,7 @@ import {
   selectArticleAction,
   searchArticlesAction,
 } from '../actions/libraryActions'
+import { setEditorFocusedAction } from '../actions/editorActions'
 
 import Library from '../presentationals/Library'
 
@@ -27,7 +28,8 @@ class LibraryContainer extends Component {
     const { dispatch } = this.props
     const article = newArticle()
     dispatch(addArticleAction(article))
-    return dispatch(selectArticleAction(article.id))
+    dispatch(selectArticleAction(article.id))
+    dispatch(setEditorFocusedAction(true))
   }
 
   onArticleSelect = articleID => this.props.dispatch(selectArticleAction(articleID))

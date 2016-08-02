@@ -25,6 +25,8 @@ export const CHANGE_EDITOR_VALUE = 'CHANGE_EDITOR_VALUE'
 
 export const SCROLL_EDITOR = 'SCROLL_EDITOR'
 
+export const SET_EDITOR_FOCUSED = 'SET_EDITOR_FOCUSED'
+
 
 // Preview =========================================================================================
 

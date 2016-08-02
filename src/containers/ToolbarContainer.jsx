@@ -46,6 +46,7 @@ class ToolbarContainer extends Component {
   render() {
     const props = { ...this.props }
     delete props.dispatch
+    delete props.libraryState
     const { toolbarState, ...other } = props
     const isHidden = toolbarState.get('isHidden')
 

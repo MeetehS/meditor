@@ -27,8 +27,8 @@ class Editor extends Component {
 
       textarea.setSelectionRange(selectionStart + selectionRange[0],
         selectionStart + selectionRange[1])
-      textarea.focus()
     }
+    textarea.focus()
   }
 
   onScroll = event => {
@@ -50,6 +50,7 @@ class Editor extends Component {
         className={`${styles.wrapper} ${className}`}
         value={article && article.get('content')}
         placeholder="Enjoy..."
+        autoFocus
         onChange={e => onChangeText(e.target.value)}
         onScroll={this.onScroll}
       />

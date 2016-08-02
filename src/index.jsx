@@ -8,7 +8,7 @@ import 'normalize.css/normalize.css'
 import 'github-markdown-css/github-markdown.css'
 import 'balloon-css/balloon.min.css'
 
-import App from './containers/App'
+import AppContainer from './containers/AppContainer'
 
 const localStorageState = localStorage.getItem('state')
 const store = configureStore(JSON.parse(localStorageState))
@@ -18,6 +18,6 @@ document.body.appendChild(container)
 
 render((
   <Provider store={store}>
-    <App />
+    <AppContainer />
   </Provider>
 ), container)

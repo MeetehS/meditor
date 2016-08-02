@@ -2,17 +2,17 @@ import React, { Component, PropTypes } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
 
-import Editor from '../../presentationals/Editor'
+import Editor from '../presentationals/Editor'
 
 import {
   addArticleAction,
   selectArticleAction,
   editArticleAction,
   finishCmdAction,
-} from '../../actions/libraryActions'
-import { scrollEditorAction } from '../../actions/editorActions'
+} from '../actions/libraryActions'
+import { scrollEditorAction } from '../actions/editorActions'
 
-import { newArticle } from '../../utils/article'
+import { newArticle } from '../utils/article'
 
 class EditorContainer extends Component {
   static propTypes = {

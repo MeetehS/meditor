@@ -2,18 +2,18 @@ import React, { Component, PropTypes } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
 
-import Toolbar from '../../presentationals/Toolbar'
+import Toolbar from '../presentationals/Toolbar'
 
-import { togglePreviewAction } from '../../actions/previewActions'
-import { toggleToolbarAction } from '../../actions/toolbarActions'
+import { togglePreviewAction } from '../actions/previewActions'
+import { toggleToolbarAction } from '../actions/toolbarActions'
 import {
   addArticleAction,
   selectArticleAction,
   addCmdAction,
   toggleLibraryAction,
-} from '../../actions/libraryActions'
+} from '../actions/libraryActions'
 
-import { newArticle } from '../../utils/article'
+import { newArticle } from '../utils/article'
 
 class ToolbarContainer extends Component {
   static propTypes = {

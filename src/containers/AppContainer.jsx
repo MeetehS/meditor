@@ -2,18 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
 
-import ToolbarContainer from '../ToolbarContainer'
-import LibraryContainer from '../LibraryContainer'
-import EditorContainer from '../EditorContainer'
-import PreviewContainer from '../PreviewContainer'
+import { toggleLibraryAction } from '../actions/libraryActions'
+import { togglePreviewAction } from '../actions/previewActions'
+import { toggleToolbarAction } from '../actions/toolbarActions'
 
-import { toggleLibraryAction } from '../../actions/libraryActions'
-import { togglePreviewAction } from '../../actions/previewActions'
-import { toggleToolbarAction } from '../../actions/toolbarActions'
+import App from '../presentationals/App'
 
-import styles from './index.css'
-
-class App extends Component {
+class AppContainer extends Component {
   static propTypes = {
     dispatch: PropTypes.func,
     state: ImmutablePropTypes.map,
@@ -48,19 +43,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
-        <ToolbarContainer />
-
-        <div className={styles.content}>
-          <LibraryContainer className={styles.library} />
-
-          <EditorContainer className={styles.editor} />
-
-          <PreviewContainer className={styles.preview} />
-        </div>
-      </div>
+      <App />
     )
   }
 }
 
-export default connect(state => ({ state }))(App)
+export default connect(state => ({ state }))(AppContainer)

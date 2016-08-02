@@ -7,11 +7,11 @@ import {
   addArticleAction,
   selectArticleAction,
   searchArticlesAction,
-} from '../../actions/libraryActions'
+} from '../actions/libraryActions'
 
-import Library from '../../presentationals/Library'
+import Library from '../presentationals/Library'
 
-import { newArticle } from '../../utils/article'
+import { newArticle } from '../utils/article'
 
 class LibraryContainer extends Component {
   static propTypes = {

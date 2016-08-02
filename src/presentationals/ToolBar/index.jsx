@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+
 import HeadingIcon from '../../icons/HeadingIcon'
 import ImageIcon from '../../icons/ImageIcon'
 import LeftQuotesIcon from '../../icons/LeftQuotesIcon'

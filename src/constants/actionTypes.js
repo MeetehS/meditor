@@ -1,5 +1,3 @@
-export const GET_GITHUB_USER_BY_USERNAME = 'GET_GITHUB_USER_BY_USERNAME'
-
 // Library =========================================================================================
 
 export const GET_ARTICLES = 'GET_ARTICLES'

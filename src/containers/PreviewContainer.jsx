@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
 
-import Preview from '../../presentationals/Preview'
+import Preview from '../presentationals/Preview'
 
 class PreviewContainer extends Component {
   static propTypes = {
@@ -13,7 +13,9 @@ class PreviewContainer extends Component {
   }
 
   render() {
-    const { dispatch, previewState, libraryState, editorState, ...other } = this.props
+    const props = { ...this.props }
+    delete props.dispatch
+    const { previewState, libraryState, editorState, ...other } = props
     const isHidden = previewState.get('isHidden')
     const currentArticle = libraryState.get('currentArticle')
     const scrollPercentage = editorState.get('scrollPercentage')

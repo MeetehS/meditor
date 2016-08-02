@@ -7,11 +7,11 @@ import {
   addArticleAction,
   selectArticleAction,
   searchArticlesAction,
-} from '../../actions/libraryActions'
+} from '../actions/libraryActions'
 
-import Library from '../../presentationals/Library'
+import Library from '../presentationals/Library'
 
-import { newArticle } from '../../utils/article'
+import { newArticle } from '../utils/article'
 
 class LibraryContainer extends Component {
   static propTypes = {
@@ -35,7 +35,9 @@ class LibraryContainer extends Component {
   onSearch = text => this.props.dispatch(searchArticlesAction(text))
 
   render() {
-    const { dispatch, libraryState, ...other } = this.props
+    const props = { ...this.props }
+    delete props.dispatch
+    const { libraryState, ...other } = props
     const isHidden = libraryState.get('isHidden')
     const articles = libraryState.get('articles')
     const currentArticle = libraryState.get('currentArticle')

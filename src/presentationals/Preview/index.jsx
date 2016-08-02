@@ -22,9 +22,9 @@ class Preview extends Component {
   }
 
   render = () => {
-    // get scrollPercentage to prevent to be prop of div
-    // TODO: issue ESLint by Airbnb
-    const { className, isHidden, article, scrollPercentage, ...other } = this.props
+    const props = { ...this.props }
+    delete props.scrollPercentage
+    const { className, isHidden, article, ...other } = props
 
     return isHidden ? null : (
       <div

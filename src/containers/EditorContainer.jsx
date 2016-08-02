@@ -10,13 +10,14 @@ import {
   editArticleAction,
   finishCmdAction,
 } from '../actions/libraryActions'
-import { scrollEditorAction } from '../actions/editorActions'
+import { scrollEditorAction, setEditorFocusedAction } from '../actions/editorActions'
 
 import { newArticle } from '../utils/article'
 
 class EditorContainer extends Component {
   static propTypes = {
     dispatch: PropTypes.func,
+    editorState: ImmutablePropTypes.map,
     libraryState: ImmutablePropTypes.map,
   }
 
@@ -36,19 +37,27 @@ class EditorContainer extends Component {
 
   onScroll = percentage => this.props.dispatch(scrollEditorAction(percentage))
 
+  onFocus = () => this.props.dispatch(setEditorFocusedAction(true))
+
+  onBlur = () => this.props.dispatch(setEditorFocusedAction(false))
+
   render() {
     const props = { ...this.props }
     delete props.dispatch
-    const { libraryState, ...other } = props
+    const { editorState, libraryState, ...other } = props
+    const { isFocused } = editorState.toJS()
     const currentArticle = libraryState.get('currentArticle')
 
     return (
       <Editor
         {...other}
         article={currentArticle}
+        isFocused={isFocused}
         onChangeText={this.onChangeText}
         onScroll={this.onScroll}
         onFinishCmd={this.onFinishCmd}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
       />
     )
   }
@@ -56,4 +65,5 @@ class EditorContainer extends Component {
 
 export default connect((state) => ({
   libraryState: state.get('libraryState'),
+  editorState: state.get('editorState'),
 }))(EditorContainer)

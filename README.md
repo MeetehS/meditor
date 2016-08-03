@@ -38,11 +38,23 @@ ToolBar is for those don't know Markdown, not developers.
 - [ ] sync scrolling: by content
 - [x] article list
 - [x] live articles search
+
+
 - [x] autosave after edit(localStorage)
+- [ ] save cursor's position
+
+
 - [x] toolbar
 - [x] library toggle
 - [x] preview toggle
 - [x] toolbar toggle
+- [ ] normal mode(show all)
+- [ ] edit mode(hide library, hide preview, hide toolbar)
+- [ ] preview mode(hide library, hide toolbar)
+- [ ] read mode(hide library, hide editor, hide toolbar)
+
+
+- [ ] add LaunchScreen
 
 ## Develop
 1. Use the immutable only in reducers.

@@ -8,6 +8,7 @@ import {
   addArticleAction,
   selectArticleAction,
   editArticleAction,
+  addCmdAction,
   finishCmdAction,
 } from '../actions/libraryActions'
 import { scrollEditorAction, setEditorFocusedAction } from '../actions/editorActions'
@@ -21,7 +22,39 @@ class EditorContainer extends Component {
     libraryState: ImmutablePropTypes.map,
   }
 
-  onChangeText = text => {
+  onChangeText = text => this.editArticle(text)
+
+  onFinishCmd = () => this.props.dispatch(finishCmdAction())
+
+  onScroll = percentage => this.props.dispatch(scrollEditorAction(percentage))
+
+  onFocus = () => this.props.dispatch(setEditorFocusedAction(true))
+
+  onBlur = () => this.props.dispatch(setEditorFocusedAction(false))
+
+  onKeyDown = (e) => {
+    if (e.key === 'Tab') {
+      e.preventDefault()
+      const { dispatch, libraryState } = this.props
+      const currentArticle = libraryState.get('currentArticle')
+      const selectionStart = global.editor.selectionStart
+      const newCmd = {
+        content: '\t',
+        selectionRange: [1, 1],
+      }
+      newCmd.selectionStart = selectionStart
+
+      if (currentArticle.size === 0) {
+        const article = newArticle()
+        dispatch(addArticleAction(article))
+        dispatch(selectArticleAction(article.id))
+        dispatch(setEditorFocusedAction(true))
+      }
+      dispatch(addCmdAction(newCmd))
+    }
+  }
+
+  editArticle = text => {
     const { dispatch, libraryState } = this.props
     const currentArticle = libraryState.get('currentArticle')
 
@@ -32,14 +65,6 @@ class EditorContainer extends Component {
     }
     return dispatch(editArticleAction(text))
   }
-
-  onFinishCmd = () => this.props.dispatch(finishCmdAction())
-
-  onScroll = percentage => this.props.dispatch(scrollEditorAction(percentage))
-
-  onFocus = () => this.props.dispatch(setEditorFocusedAction(true))
-
-  onBlur = () => this.props.dispatch(setEditorFocusedAction(false))
 
   render() {
     const props = { ...this.props }
@@ -58,6 +83,7 @@ class EditorContainer extends Component {
         onFinishCmd={this.onFinishCmd}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
       />
     )
   }

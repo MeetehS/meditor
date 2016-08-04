@@ -34,9 +34,9 @@ class ToolbarContainer extends Component {
       const article = newArticle()
       dispatch(addArticleAction(article))
       dispatch(selectArticleAction(article.id))
-      dispatch(setEditorFocusedAction(true))
     }
     dispatch(addCmdAction(newCmd))
+    dispatch(setEditorFocusedAction(true))
   }
 
   onLibraryToggle = () => this.props.dispatch(toggleLibraryAction())

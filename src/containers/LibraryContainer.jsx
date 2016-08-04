@@ -32,7 +32,11 @@ class LibraryContainer extends Component {
     dispatch(setEditorFocusedAction(true))
   }
 
-  onArticleSelect = articleID => this.props.dispatch(selectArticleAction(articleID))
+  onArticleSelect = articleID => {
+    const { dispatch } = this.props
+    dispatch(selectArticleAction(articleID))
+    dispatch(setEditorFocusedAction(true))
+  }
 
   onSearch = text => this.props.dispatch(searchArticlesAction(text))
 

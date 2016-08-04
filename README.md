@@ -9,9 +9,9 @@ markdown style is [github-markdown-css](https://github.com/sindresorhus/github-m
 [![Demo](http://ww2.sinaimg.cn/large/72f96cbagw1f6dcof9z9mj21400p0aly.jpg)](https://zhiquan-yu.github.io/meditor/)
 
 ## Environment of develop
-macOS 10.12 beta
-Node v6.3.0
-npm v3.10.3
+- macOS 10.12 beta
+- Node v6.3.0
+- npm v3.10.3
 
 ## Design
 1. Evertime when user go to the editor, it should be in the new article state, if user input, add a

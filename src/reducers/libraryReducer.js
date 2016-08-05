@@ -28,9 +28,15 @@ export default handleActions({
     state.update('articles', articles => articles.concat(fromJS(payload)))
   ),
 
-  [ADD_ARTICLE]: (state, { payload }) => (
-    state.update('articles', articles => articles.unshift(fromJS(payload)))
-  ),
+  [ADD_ARTICLE]: (state, { payload }) => {
+    const db = global.db
+
+    const req = db.transaction('articles', 'readwrite').objectStore('articles').add(payload)
+
+    req.onsuccess = () => console.info('add article to db success')
+
+    return state.update('articles', articles => articles.unshift(fromJS(payload)))
+  },
 
   [EDIT_ARTICLE]: (state, { payload }) => {
     let newState = state

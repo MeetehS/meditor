@@ -23,7 +23,11 @@ const config = {
     }, {
       include: path.resolve(__dirname, 'src'),
       test: /\.css$/,
-      loader: 'style-loader!css-loader?modules&localIdentName=[local]-[hash:base64:5]!postcss-loader',
+      loaders: [
+        'style-loader',
+        'css-loader?modules&localIdentName=[local]-[hash:base64:5]',
+        'postcss-loader',
+      ],
     }, {
       include: [
         path.resolve(__dirname, 'node_modules/normalize.css'),

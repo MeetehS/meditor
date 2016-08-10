@@ -1,8 +1,13 @@
+@value palettes: '../palettes.css';
+@value textColor, borderColor from palettes;
+
 .wrapper {
   box-sizing: border-box;
   min-width: 200px;
   max-width: 980px;
   padding: 15px;
-  border-left: 1px solid #c8c7cc;
+  border-left: 1px solid borderColor;
   overflow-y: auto;
+  color: textColor;
+  font-family: Helvetica, Tahoma, Arial, PingFangSC-Regular, “Microsoft YaHei”, sans-serif;
 }

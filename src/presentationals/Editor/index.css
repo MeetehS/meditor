@@ -1,5 +1,5 @@
 @value palettes: '../palettes.css';
-@value editorBgColor from palettes;
+@value textColor, editorBgColor from '../palettes.css';
 
 .wrapper {
   border: 0;
@@ -8,6 +8,8 @@
   resize: none;
   max-width: 816px;
   margin: 0 auto;
-  line-height: 1.5;
+  line-height: 1.7;
+  color: textColor;
   background-color: editorBgColor;
+  font-family: Helvetica, Tahoma, Arial, PingFangSC-Regular, “Microsoft YaHei”, sans-serif;
 }

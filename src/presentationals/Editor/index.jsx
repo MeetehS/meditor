@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react'
-import ImmutablePropTypes from 'react-immutable-proptypes'
 
 import styles from './index.css'
 
 class Editor extends Component {
   static propTypes = {
     className: PropTypes.string,
-    article: ImmutablePropTypes.map,
+    article: PropTypes.object,
     isFocused: PropTypes.bool,
     onChangeText: PropTypes.func,
     onScroll: PropTypes.func,
@@ -23,7 +22,7 @@ class Editor extends Component {
     if (isFocused) {
       const textarea = this.refs.textarea
       const { article, onFinishCmd } = this.props
-      const { cmd } = article.toJS()
+      const { cmd } = article
       if (cmd) {
         const { selectionStart, selectionRange } = cmd
         onFinishCmd()
@@ -53,7 +52,7 @@ class Editor extends Component {
         {...other}
         ref="textarea"
         className={`${styles.wrapper} ${className}`}
-        value={article && article.get('content')}
+        value={article ? article.content : ''}
         placeholder="Enjoy..."
         autoFocus
         onChange={e => onChangeText(e.target.value)}

@@ -16,9 +16,9 @@ class PreviewContainer extends Component {
     const props = { ...this.props }
     delete props.dispatch
     const { previewState, libraryState, editorState, ...other } = props
-    const isHidden = previewState.get('isHidden')
-    const currentArticle = libraryState.get('currentArticle')
-    const scrollPercentage = editorState.get('scrollPercentage')
+    const { isHidden } = previewState.toJS()
+    const { currentArticle } = libraryState.toJS()
+    const { scrollPercentage } = editorState.toJS()
 
     return (
       <Preview

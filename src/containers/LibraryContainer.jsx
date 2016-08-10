@@ -3,7 +3,6 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
 
 import {
-  getArticlesAction,
   addArticleAction,
   selectArticleAction,
   searchArticlesAction,
@@ -21,20 +20,28 @@ class LibraryContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getArticlesAction([]))
+    const { dispatch, libraryState } = this.props
+    const { currentArticle } = libraryState.toJS()
+
+    if (!currentArticle) {
+      const article = newArticle()
+      dispatch(addArticleAction(article))
+      dispatch(selectArticleAction(article))
+      dispatch(setEditorFocusedAction())
+    }
   }
 
   onAddBtnClick = () => {
     const { dispatch } = this.props
     const article = newArticle()
     dispatch(addArticleAction(article))
-    dispatch(selectArticleAction(article.id))
+    dispatch(selectArticleAction(article))
     dispatch(setEditorFocusedAction(true))
   }
 
-  onArticleSelect = articleID => {
+  onArticleSelect = article => {
     const { dispatch } = this.props
-    dispatch(selectArticleAction(articleID))
+    dispatch(selectArticleAction(article))
     dispatch(setEditorFocusedAction(true))
   }
 
@@ -44,11 +51,7 @@ class LibraryContainer extends Component {
     const props = { ...this.props }
     delete props.dispatch
     const { libraryState, ...other } = props
-    const isHidden = libraryState.get('isHidden')
-    const articles = libraryState.get('articles')
-    const currentArticle = libraryState.get('currentArticle')
-    const searchText = libraryState.get('searchText')
-    const searchArticles = libraryState.get('searchArticles')
+    const { isHidden, articles, currentArticle, searchText, searchArticles } = libraryState.toJS()
 
     return (
       <Library

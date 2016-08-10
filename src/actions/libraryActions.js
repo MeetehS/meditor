@@ -1,7 +1,6 @@
 import { createAction } from 'redux-actions'
 
 import {
-  GET_ARTICLES,
   ADD_ARTICLE,
   EDIT_ARTICLE,
   ADD_CMD,
@@ -10,8 +9,6 @@ import {
   SEARCH_ARTICLES,
   TOGGLE_LIBRARY,
 } from '../constants/actionTypes'
-
-export const getArticlesAction = createAction(GET_ARTICLES)
 
 export const addArticleAction = createAction(ADD_ARTICLE)
 

@@ -10,11 +10,10 @@ const config = {
   entry: {
     home,
     vendor: [
-      'github-markdown-css',
       'immutable',
       'isomorphic-fetch',
       'marked',
-      'normalize.css',
+      'mousetrap',
       'react',
       'react-css-modules',
       'react-dom',
@@ -23,6 +22,7 @@ const config = {
       'redux',
       'redux-actions',
       'redux-immutable',
+      'redux-promise',
     ],
   },
   output,

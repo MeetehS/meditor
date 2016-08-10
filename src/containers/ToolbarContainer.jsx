@@ -7,14 +7,10 @@ import Toolbar from '../presentationals/Toolbar'
 import { togglePreviewAction } from '../actions/previewActions'
 import { toggleToolbarAction } from '../actions/toolbarActions'
 import {
-  addArticleAction,
-  selectArticleAction,
   addCmdAction,
   toggleLibraryAction,
 } from '../actions/libraryActions'
 import { setEditorFocusedAction } from '../actions/editorActions'
-
-import { newArticle } from '../utils/article'
 
 class ToolbarContainer extends Component {
   static propTypes = {
@@ -24,17 +20,11 @@ class ToolbarContainer extends Component {
   }
 
   onCmdBtnClick = cmd => {
-    const { dispatch, libraryState } = this.props
-    const currentArticle = libraryState.get('currentArticle')
+    const { dispatch } = this.props
     const selectionStart = global.editor.selectionStart
     const newCmd = cmd
     newCmd.selectionStart = selectionStart
 
-    if (currentArticle.size === 0) {
-      const article = newArticle()
-      dispatch(addArticleAction(article))
-      dispatch(selectArticleAction(article.id))
-    }
     dispatch(addCmdAction(newCmd))
     dispatch(setEditorFocusedAction(true))
   }

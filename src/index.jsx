@@ -10,8 +10,11 @@ import 'balloon-css/balloon.min.css'
 
 import AppContainer from './containers/AppContainer'
 
-const localStorageState = localStorage.getItem('state')
-const store = configureStore(JSON.parse(localStorageState))
+let initialState = localStorage.getItem('state')
+if (initialState) {
+  initialState = JSON.parse(initialState)
+}
+const store = configureStore(initialState)
 
 const container = document.createElement('div')
 document.body.appendChild(container)

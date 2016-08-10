@@ -1,5 +1,5 @@
 @value palettes: '../palettes.css';
-@value baseColor, lightGray, borderColor from palettes;
+@value baseColor, bgColor, borderColor from palettes;
 
 .wrapper {
   display: flex;
@@ -7,7 +7,7 @@
   box-sizing: border-box;
   height: 44px;
   padding-left: 8px;
-  background-color: lightGray;
+  background-color: bgColor;
   border-bottom: 1px solid borderColor;
 }
 

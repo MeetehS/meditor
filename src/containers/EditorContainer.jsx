@@ -22,7 +22,7 @@ class EditorContainer extends Component {
     libraryState: ImmutablePropTypes.map,
   }
 
-  onChangeText = text => this.editArticle(text)
+  onChangeText = text => this.props.dispatch(editArticleAction(text))
 
   onFinishCmd = () => this.props.dispatch(finishCmdAction())
 
@@ -47,23 +47,11 @@ class EditorContainer extends Component {
       if (currentArticle.size === 0) {
         const article = newArticle()
         dispatch(addArticleAction(article))
-        dispatch(selectArticleAction(article.id))
+        dispatch(selectArticleAction(article))
         dispatch(setEditorFocusedAction(true))
       }
       dispatch(addCmdAction(newCmd))
     }
-  }
-
-  editArticle = text => {
-    const { dispatch, libraryState } = this.props
-    const currentArticle = libraryState.get('currentArticle')
-
-    if (currentArticle.size === 0) {
-      const article = newArticle(text)
-      dispatch(addArticleAction(article))
-      return dispatch(selectArticleAction(article.id))
-    }
-    return dispatch(editArticleAction(text))
   }
 
   render() {
@@ -71,7 +59,7 @@ class EditorContainer extends Component {
     delete props.dispatch
     const { editorState, libraryState, ...other } = props
     const { isFocused } = editorState.toJS()
-    const currentArticle = libraryState.get('currentArticle')
+    const { currentArticle } = libraryState.toJS()
 
     return (
       <Editor

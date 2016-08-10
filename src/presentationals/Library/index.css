@@ -1,11 +1,12 @@
 @value palettes: '../palettes.css';
-@value baseColor, lightGray, borderColor from palettes;
+@value baseColor, bgColor, textColor, borderColor from palettes;
 
 .wrapper {
   display: flex;
   flex-direction: column;
   border-right: 1px solid borderColor;
-  background-color: lightGray;
+  color: textColor;
+  background-color: bgColor;
 }
 
 .listView {

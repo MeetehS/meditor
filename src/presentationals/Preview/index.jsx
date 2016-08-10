@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import ImmutablePropTypes from 'react-immutable-proptypes'
 import marked from 'marked'
 import styles from './index.css'
 
@@ -7,7 +6,7 @@ class Preview extends Component {
   static propTypes = {
     className: PropTypes.string,
     isHidden: PropTypes.bool,
-    article: ImmutablePropTypes.map,
+    article: PropTypes.object,
     scrollPercentage: PropTypes.number,
   }
 
@@ -30,7 +29,7 @@ class Preview extends Component {
       <div
         ref="wrapper"
         className={`markdown-body ${styles.wrapper} ${className}`}
-        dangerouslySetInnerHTML={{ __html: article.size > 0 ? marked(article.get('content')) : '' }}
+        dangerouslySetInnerHTML={{ __html: article ? marked(article.content) : '' }}
         {...other}
       />
     )

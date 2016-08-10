@@ -1,4 +1,4 @@
-## TODO
+## REQUIREMENTS
 - [x] markdown parser
 - [x] live preview
 - [x] sync scrolling: by percentage

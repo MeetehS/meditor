@@ -19,7 +19,7 @@ const initialState = fromJS({
   articles: [],
   currentArticle: null,
   searchText: '',
-  searchArticles: [],
+  searchArticles: null,
 })
 
 export default handleActions({
@@ -71,11 +71,15 @@ export default handleActions({
 
   [SELECT_ARTICLE]: (state, { payload }) => state.set('currentArticle', fromJS(payload)),
 
-  [SEARCH_ARTICLES]: (state, { payload }) => (
-    state.set('searchText', payload).set('searchArticles',
+  [SEARCH_ARTICLES]: (state, { payload }) => {
+    // if searchText is '', searchArticles should be null
+    if (payload === '') {
+      return state.set('searchText', '').set('searchArticles', null)
+    }
+    return state.set('searchText', payload).set('searchArticles',
       state.get('articles').filter(article =>
         article.get('content').toLowerCase().search(payload.toLowerCase()) !== -1))
-  ),
+  },
 
   [TOGGLE_LIBRARY]: state => state.set('isHidden', !state.get('isHidden')),
 }, initialState)

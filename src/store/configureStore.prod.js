@@ -1,15 +1,12 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { fromJS } from 'immutable'
+import promiseMiddleware from 'redux-promise'
 
 import reducers from '../reducers'
 
 export default function configureStore(initialState) {
-  let store
-  if (initialState === null) {
-    store = createStore(reducers)
-  } else {
-    store = createStore(reducers, fromJS(initialState))
+  if (!initialState) {
+    return createStore(reducers, applyMiddleware(promiseMiddleware))
   }
-
-  return store
+  return createStore(reducers, fromJS(initialState), applyMiddleware(promiseMiddleware))
 }

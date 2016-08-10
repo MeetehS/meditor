@@ -5,7 +5,6 @@ import { getFirstLine } from '../utils/string'
 import { getyyyymmddhhMMss } from '../utils/date'
 
 import {
-  GET_ARTICLES,
   ADD_ARTICLE,
   EDIT_ARTICLE,
   ADD_CMD,
@@ -18,25 +17,15 @@ import {
 const initialState = fromJS({
   isHidden: false,
   articles: [],
-  currentArticle: {},
+  currentArticle: null,
   searchText: '',
   searchArticles: [],
 })
 
 export default handleActions({
-  [GET_ARTICLES]: (state, { payload }) => (
-    state.update('articles', articles => articles.concat(fromJS(payload)))
+  [ADD_ARTICLE]: (state, { payload }) => (
+    state.update('articles', articles => articles.unshift(fromJS(payload)))
   ),
-
-  [ADD_ARTICLE]: (state, { payload }) => {
-    const db = global.db
-
-    const req = db.transaction('articles', 'readwrite').objectStore('articles').add(payload)
-
-    req.onsuccess = () => console.info('add article to db success')
-
-    return state.update('articles', articles => articles.unshift(fromJS(payload)))
-  },
 
   [EDIT_ARTICLE]: (state, { payload }) => {
     let newState = state
@@ -80,14 +69,7 @@ export default handleActions({
 
   [FINISH_CMD]: state => state.setIn(['currentArticle', 'cmd'], null),
 
-  [SELECT_ARTICLE]: (state, { payload }) => {
-    for (let i = 0, len = state.get('articles').size; i < len; i++) {
-      if (state.getIn(['articles', i, 'id']) === payload) {
-        return state.set('currentArticle', state.getIn(['articles', i]))
-      }
-    }
-    return state
-  },
+  [SELECT_ARTICLE]: (state, { payload }) => state.set('currentArticle', fromJS(payload)),
 
   [SEARCH_ARTICLES]: (state, { payload }) => (
     state.set('searchText', payload).set('searchArticles',

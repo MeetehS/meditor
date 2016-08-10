@@ -1,9 +1,5 @@
 # meditor
-a markdown editor, use react, redux
-
-markdown parser is [marked](https://github.com/chjj/marked)
-
-markdown style is [github-markdown-css](https://github.com/sindresorhus/github-markdown-css)
+a pure editor
 
 [Demo](https://zhiquan-yu.github.io/meditor/)
 [![Demo](http://ww2.sinaimg.cn/large/72f96cbagw1f6dcof9z9mj21400p0aly.jpg)](https://zhiquan-yu.github.io/meditor/)

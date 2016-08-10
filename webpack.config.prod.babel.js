@@ -22,6 +22,7 @@ const config = {
       'redux',
       'redux-actions',
       'redux-immutable',
+      'redux-promise',
     ],
   },
   output,

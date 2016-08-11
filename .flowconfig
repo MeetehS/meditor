@@ -1,0 +1,12 @@
+[ignore]
+.*/node_modules/.*
+.*/design/.*
+.*/work/.*
+
+[include]
+
+[libs]
+interfaces/
+
+[options]
+module.name_mapper.extension='css' -> '<PROJECT_ROOT>/flow/stub/css-modules.js'

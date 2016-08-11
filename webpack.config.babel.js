@@ -48,7 +48,7 @@ const config = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      title: 'MEditor',
+      title: 'MEditor: a pure editor',
       favicon: './src/icons/favicon/favicon.ico',
     }),
   ],

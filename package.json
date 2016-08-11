@@ -6,7 +6,9 @@
     "webpack-prod": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js --progress --colors",
     "start": "webpack-dev-server --inline --hot",
     "build": "npm run webpack-prod",
-    "test": "mocha --recursive --compilers js:babel-core/register"
+    "test": "mocha --recursive --compilers js:babel-core/register",
+    "eslint": "eslint \"**/*.js?(x)\"",
+    "flow": "flow"
   },
   "dependencies": {
     "balloon-css": "^0.3.0",
@@ -33,6 +35,7 @@
     "babel-loader": "^6.2.4",
     "babel-plugin-syntax-async-functions": "^6.8.0",
     "babel-plugin-transform-class-properties": "^6.9.1",
+    "babel-plugin-transform-flow-strip-types": "^6.8.0",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-plugin-transform-regenerator": "^6.9.0",
     "babel-preset-es2015": "^6.9.0",
@@ -41,6 +44,7 @@
     "css-loader": "^0.23.1",
     "eslint-config-airbnb": "^9.0.1",
     "file-loader": "^0.9.0",
+    "flow-bin": "^0.30.0",
     "html-webpack-plugin": "^2.19.0",
     "mocha": "^3.0.0",
     "postcss-loader": "^0.9.1",

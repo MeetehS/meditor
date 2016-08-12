@@ -22,7 +22,7 @@
 }
 
 .addBtn {
-  composes: toolbarBtn from '../ToolBar/index.css';
+  composes: toolbarBtn from '../Toolbar/index.css';
   margin-right: 12px;
   margin-left: 12px;
 }

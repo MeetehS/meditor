@@ -1,47 +1,23 @@
-import webpack from 'webpack'
-import HTMLWebpackPlugin from 'html-webpack-plugin'
+import { optimize } from 'webpack'
 
-import devConfig from './webpack.config.babel'
+import defaultConfig from './webpack.config.babel'
 
-const { entry, output, resolve, module, postcss } = devConfig
-const { home } = entry
+const { OccurenceOrderPlugin, CommonsChunkPlugin, UglifyJsPlugin } = optimize
+
+const { entry, output, resolve, module, plugins, postcss } = defaultConfig
 
 const config = {
-  entry: {
-    home,
-    vendor: [
-      'immutable',
-      'isomorphic-fetch',
-      'marked',
-      'mousetrap',
-      'react',
-      'react-css-modules',
-      'react-dom',
-      'react-immutable-proptypes',
-      'react-redux',
-      'redux',
-      'redux-actions',
-      'redux-immutable',
-      'redux-promise',
-    ],
-  },
+  entry,
   output,
   resolve,
   module,
-  plugins: [
-    new HTMLWebpackPlugin({
-      title: 'MEditor',
-      favicon: './src/icons/favicon/favicon.ico',
-    }),
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false },
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"',
-    }),
-  ],
   postcss,
+  plugins: [
+    ...plugins,
+    new OccurenceOrderPlugin(),
+    new CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
+    new UglifyJsPlugin({ compress: { warnings: false } }),
+  ],
 }
 
 export default config

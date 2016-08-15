@@ -17,11 +17,8 @@ if (initialState) {
 }
 const store = configureStore(initialState)
 
-const container = document.createElement('div')
-document.body.appendChild(container)
-
 render((
   <Provider store={store}>
     <AppContainer />
   </Provider>
-), container)
+), document.getElementById('app'))

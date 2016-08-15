@@ -1,14 +1,12 @@
 import webpack from 'webpack'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
-
-import devConfig from './webpack.config.babel'
-
-const { entry, output, resolve, module, postcss } = devConfig
-const { home } = entry
+import values from 'postcss-modules-values'
+import autoprefixer from 'autoprefixer'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 const config = {
   entry: {
-    home,
+    app: ['./src/index.jsx'],
     vendor: [
       'immutable',
       'isomorphic-fetch',
@@ -25,23 +23,53 @@ const config = {
       'redux-promise',
     ],
   },
-  output,
-  resolve,
-  module,
+  output: {
+    path: `${__dirname}/public`,
+    filename: '[name].bundle.js',
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
+  module: {
+    loaders: [{
+      include: `${__dirname}/src`,
+      test: /\.jsx?$/,
+      loader: 'babel',
+    }, {
+      include: `${__dirname}/src`,
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract(
+        'css?modules&localIdentName=[local]-[hash:base64:5]!postcss'
+      ),
+    }, {
+      include: [
+        `${__dirname}/node_modules/normalize.css`,
+        `${__dirname}/node_modules/github-markdown-css`,
+        `${__dirname}/node_modules/balloon-css`,
+      ],
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract('css'),
+    }, {
+      include: `${__dirname}/src/icons/svgs`,
+      test: /\.svg$/,
+      loader: 'babel!svg-react',
+    }, {
+      include: `${__dirname}/src/imgs}`,
+      test: /\.(png|jpg|eot|ttf|woff|woff2|svg|otf)\??.*$/,
+      loader: 'url-loader?limit=8192',
+    }],
+  },
   plugins: [
     new HTMLWebpackPlugin({
-      title: 'MEditor',
+      template: `${__dirname}/src/index.html`,
       favicon: './src/icons/favicon/favicon.ico',
     }),
+    new ExtractTextPlugin('[name]-[hash].css'),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false },
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"',
-    }),
+    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
   ],
-  postcss,
+  postcss: [values, autoprefixer],
 }
 
 export default config

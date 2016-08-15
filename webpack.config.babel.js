@@ -1,56 +1,77 @@
-import path from 'path'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
 import values from 'postcss-modules-values'
 import autoprefixer from 'autoprefixer'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 const config = {
-  devtool: '#source-map',
+  devtool: 'eval-source-map',
   entry: {
-    home: ['./src/index.jsx'],
+    app: ['./src/index.jsx'],
+    vendor: [
+      'immutable',
+      'isomorphic-fetch',
+      'marked',
+      'mousetrap',
+      'react',
+      'react-css-modules',
+      'react-dom',
+      'react-immutable-proptypes',
+      'react-redux',
+      'redux',
+      'redux-actions',
+      'redux-immutable',
+      'redux-promise',
+    ],
   },
   output: {
-    path: path.resolve(__dirname),
+    path: `${__dirname}/public`,
     filename: '[name].bundle.js',
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
+  devServer: {
+    contentBase: './public',
+    colors: true,
+    historyApiFallback: true,
+    inline: true,
+    hot: true,
+  },
   module: {
     loaders: [{
-      include: path.resolve(__dirname, 'src'),
+      include: `${__dirname}/src`,
       test: /\.jsx?$/,
       loader: 'babel',
     }, {
-      include: path.resolve(__dirname, 'src'),
+      include: `${__dirname}/src`,
       test: /\.css$/,
-      loaders: [
-        'style-loader',
-        'css-loader?modules&localIdentName=[local]-[hash:base64:5]',
-        'postcss-loader',
-      ],
+      loader: ExtractTextPlugin.extract(
+        'css?modules&localIdentName=[local]-[hash:base64:5]!postcss'
+      ),
     }, {
       include: [
-        path.resolve(__dirname, 'node_modules/normalize.css'),
-        path.resolve(__dirname, 'node_modules/github-markdown-css'),
-        path.resolve(__dirname, 'node_modules/balloon-css'),
+        `${__dirname}/node_modules/normalize.css`,
+        `${__dirname}/node_modules/github-markdown-css`,
+        `${__dirname}/node_modules/balloon-css`,
       ],
       test: /\.css$/,
-      loader: 'style-loader!css-loader',
+      loader: ExtractTextPlugin.extract('css'),
     }, {
-      include: path.resolve(__dirname, 'src/icons/svgs'),
+      include: `${__dirname}/src/icons/svgs`,
       test: /\.svg$/,
       loader: 'babel!svg-react',
     }, {
-      include: path.resolve(__dirname, 'src/imgs'),
+      include: `${__dirname}/src/imgs}`,
       test: /\.(png|jpg|eot|ttf|woff|woff2|svg|otf)\??.*$/,
       loader: 'url-loader?limit=8192',
     }],
   },
   plugins: [
     new HTMLWebpackPlugin({
-      title: 'MEditor: a pure editor',
+      template: `${__dirname}/src/index.html`,
       favicon: './src/icons/favicon/favicon.ico',
     }),
+    new ExtractTextPlugin('[name]-[hash].css'),
   ],
   postcss: [values, autoprefixer],
 }

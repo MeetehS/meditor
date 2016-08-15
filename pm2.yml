@@ -1,0 +1,6 @@
+apps:
+  - script: server.js
+    name: meditor
+    watch: true
+    ignore_watch:
+      - node_modules

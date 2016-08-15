@@ -4,7 +4,7 @@
   "description": "a markdown editor, use react, redux",
   "scripts": {
     "webpack-prod": "NODE_ENV=production webpack --config webpack.config.prod.babel.js --progress --colors",
-    "start": "npm run webpack-prod && node server.js",
+    "start": "npm run webpack-prod && pm2 start pm2.yml && pm2 logs meditor",
     "dev": "webpack-dev-server --inline --hot",
     "test": "mocha --recursive --compilers js:babel-core/register",
     "eslint": "eslint \"**/*.js?(x)\"",
@@ -22,6 +22,7 @@
     "marked": "^0.3.5",
     "mousetrap": "^1.6.0",
     "normalize.css": "^4.2.0",
+    "pm2": "^1.1.3",
     "react": "^15.1.0",
     "react-css-modules": "^3.7.6",
     "react-dom": "^15.1.0",

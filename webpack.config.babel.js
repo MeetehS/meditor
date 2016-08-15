@@ -1,3 +1,4 @@
+import webpack from 'webpack'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
 import values from 'postcss-modules-values'
 import autoprefixer from 'autoprefixer'
@@ -34,8 +35,6 @@ const config = {
     contentBase: './public',
     colors: true,
     historyApiFallback: true,
-    inline: true,
-    hot: true,
   },
   module: {
     loaders: [{
@@ -72,6 +71,9 @@ const config = {
       favicon: './src/icons/favicon/favicon.ico',
     }),
     new ExtractTextPlugin('[name]-[hash].css'),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    }),
   ],
   postcss: [values, autoprefixer],
 }

@@ -4,8 +4,8 @@
   "description": "a markdown editor, use react, redux",
   "scripts": {
     "webpack-prod": "NODE_ENV=production webpack --config webpack.config.prod.babel.js --progress --colors",
-    "start": "webpack-dev-server",
-    "build": "npm run webpack-prod",
+    "start": "npm run webpack-prod && node server.js",
+    "dev": "webpack-dev-server --inline --hot",
     "test": "mocha --recursive --compilers js:babel-core/register",
     "eslint": "eslint \"**/*.js?(x)\"",
     "stylelint": "stylelint \"src/**/*.css\"",
@@ -13,9 +13,12 @@
   },
   "dependencies": {
     "balloon-css": "^0.3.0",
+    "co-ejs": "^1.5.2",
     "github-markdown-css": "^2.3.0",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
+    "koa": "^1.2.1",
+    "koa-static-cache": "^3.1.7",
     "marked": "^0.3.5",
     "mousetrap": "^1.6.0",
     "normalize.css": "^4.2.0",

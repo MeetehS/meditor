@@ -4,7 +4,7 @@
   "description": "a markdown editor, use react, redux",
   "scripts": {
     "webpack-prod": "NODE_ENV=production webpack --config webpack.config.prod.babel.js --progress --colors",
-    "start": "npm run webpack-prod && pm2 start pm2.yml && pm2 logs meditor",
+    "start": "npm run webpack-prod && pm2 start pm2.yml",
     "dev": "webpack-dev-server --inline --hot",
     "test": "mocha --recursive --compilers js:babel-core/register",
     "eslint": "eslint \"**/*.js?(x)\"",

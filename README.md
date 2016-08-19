@@ -2,7 +2,7 @@
 a pure editor
 
 [Demo](https://zhiquan-yu.github.io/meditor/)
-[![Demo](http://ww2.sinaimg.cn/large/72f96cbagw1f6dcof9z9mj21400p0aly.jpg)](https://zhiquan-yu.github.io/meditor/)
+[![Demo](http://ww2.sinaimg.cn/large/72f96cbagw1f6dcof9z9mj21400p0aly.jpg)](http://meditor.meetehs.com)
 
 ## Q&A
 ### What is autosave? And how do you realized?

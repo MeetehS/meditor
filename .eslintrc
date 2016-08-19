@@ -9,7 +9,7 @@
   "parser": "babel-eslint",
   "rules": {
     "semi": [2, "never"],
-    "no-console": ["error", { allow: ["warn", "error"] }]
+    "no-console": ["error", { allow: ["log", "warn", "error"] }]
   },
   "extends": "airbnb",
 }

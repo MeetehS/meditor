@@ -2,6 +2,8 @@ const koa = require('koa')
 const staticCache = require('koa-static-cache')
 const render = require('co-ejs')
 
+const PORT = process.env.PORT || 3001
+
 const app = koa()
 
 app.use(staticCache(`${__dirname}/public`))
@@ -15,4 +17,4 @@ app.use(function* renderIndex() {
   yield this.render('index')
 })
 
-app.listen(8080, () => console.log('Server running at port 8080'))
+app.listen(PORT, () => console.log('Server running at port ', PORT))

@@ -4,8 +4,8 @@
   "description": "a pure markdown editor",
   "scripts": {
     "webpack-prod": "NODE_ENV=production webpack --config webpack.config.prod.babel.js --progress --colors",
-    "deploy": "npm run webpack-prod && pm2 start pm2.yml",
     "start": "webpack-dev-server --inline --hot",
+    "deploy": "npm run webpack-prod && pm2 start pm2.yml",
     "test": "mocha --recursive --compilers js:babel-core/register",
     "eslint": "eslint \"**/*.js?(x)\"",
     "stylelint": "stylelint \"src/**/*.css\"",

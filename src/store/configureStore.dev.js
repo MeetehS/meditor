@@ -10,9 +10,6 @@ const loggerMiddleware = createLogger({
 })
 
 export default function configureStore(initialState) {
-  if (!initialState) {
-    return createStore(reducers, applyMiddleware(promiseMiddleware, loggerMiddleware))
-  }
   return createStore(reducers, fromJS(initialState),
     applyMiddleware(promiseMiddleware, loggerMiddleware))
 }

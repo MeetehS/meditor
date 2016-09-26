@@ -41,7 +41,7 @@ const Library = ({
       {articles.map((article, index) => (
         <li
           key={index}
-          className={article.content === currentArticle.content && styles.active}
+          className={article.id === currentArticle.id && styles.active}
           onClick={() => onArticleSelect(article)}
         >
           {article.title}

@@ -23,9 +23,9 @@ class AppContainer extends Component {
     Mousetrap.bind('alt+t', () => dispatch(toggleToolbarAction()))
   }
 
-  componentDidUpdate() {
-    localStorage.setItem('state', JSON.stringify(this.props.state.toJS()))
-  }
+  // componentDidUpdate() {
+  //   localStorage.setItem('state', JSON.stringify(this.props.state.toJS()))
+  // }
 
   render() {
     return (

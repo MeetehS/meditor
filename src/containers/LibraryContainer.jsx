@@ -27,7 +27,7 @@ class LibraryContainer extends Component {
       const article = newArticle()
       dispatch(addArticleAction(article))
       dispatch(selectArticleAction(article))
-      dispatch(setEditorFocusedAction())
+      // dispatch(setEditorFocusedAction(true))
     }
   }
 
@@ -36,13 +36,13 @@ class LibraryContainer extends Component {
     const article = newArticle()
     dispatch(addArticleAction(article))
     dispatch(selectArticleAction(article))
-    dispatch(setEditorFocusedAction(true))
+    // dispatch(setEditorFocusedAction(true))
   }
 
   onArticleSelect = article => {
     const { dispatch } = this.props
     dispatch(selectArticleAction(article))
-    dispatch(setEditorFocusedAction(true))
+    // dispatch(setEditorFocusedAction(true))
   }
 
   onSearch = text => this.props.dispatch(searchArticlesAction(text))

@@ -54,7 +54,6 @@ class Editor extends Component {
         className={`${styles.wrapper} ${className}`}
         value={article ? article.content : ''}
         placeholder="Enjoy..."
-        autoFocus
         onChange={e => onChangeText(e.target.value)}
         onScroll={this.onScroll}
         onFocus={onFocus}

@@ -12,7 +12,6 @@ const config = {
       'immutable',
       'isomorphic-fetch',
       'marked',
-      'mousetrap',
       'react',
       'react-css-modules',
       'react-dom',

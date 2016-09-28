@@ -28,9 +28,13 @@ class EditorContainer extends Component {
 
   onScroll = percentage => this.props.dispatch(scrollEditorAction(percentage))
 
-  onFocus = () => this.props.dispatch(setEditorFocusedAction(true))
+  onFocus = () => {
+    // this.props.dispatch(setEditorFocusedAction(true))
+  }
 
-  onBlur = () => this.props.dispatch(setEditorFocusedAction(false))
+  onBlur = () => {
+    // this.props.dispatch(setEditorFocusedAction(false))
+  }
 
   onKeyDown = (e) => {
     if (e.key === 'Tab') {
@@ -48,7 +52,7 @@ class EditorContainer extends Component {
         const article = newArticle()
         dispatch(addArticleAction(article))
         dispatch(selectArticleAction(article))
-        dispatch(setEditorFocusedAction(true))
+        // dispatch(setEditorFocusedAction(true))
       }
       dispatch(addCmdAction(newCmd))
     }

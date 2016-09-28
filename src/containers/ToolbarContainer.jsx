@@ -26,7 +26,7 @@ class ToolbarContainer extends Component {
     newCmd.selectionStart = selectionStart
 
     dispatch(addCmdAction(newCmd))
-    // dispatch(setEditorFocusedAction(true))
+    dispatch(setEditorFocusedAction(true))
   }
 
   onLibraryToggle = () => this.props.dispatch(toggleLibraryAction())

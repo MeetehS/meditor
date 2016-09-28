@@ -27,7 +27,7 @@ class LibraryContainer extends Component {
       const article = newArticle()
       dispatch(addArticleAction(article))
       dispatch(selectArticleAction(article))
-      // dispatch(setEditorFocusedAction(true))
+      dispatch(setEditorFocusedAction(true))
     }
   }
 
@@ -36,7 +36,7 @@ class LibraryContainer extends Component {
     const article = newArticle()
     dispatch(addArticleAction(article))
     dispatch(selectArticleAction(article))
-    // dispatch(setEditorFocusedAction(true))
+    dispatch(setEditorFocusedAction(true))
   }
 
   onArticleSelect = article => {

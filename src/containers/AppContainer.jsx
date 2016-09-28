@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
-import Mousetrap from 'mousetrap'
 
 import { toggleLibraryAction } from '../actions/libraryActions'
 import { togglePreviewAction } from '../actions/previewActions'
@@ -17,15 +16,26 @@ class AppContainer extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props
-
-    Mousetrap.bind('alt+l', () => dispatch(toggleLibraryAction()))
-    Mousetrap.bind('alt+p', () => dispatch(togglePreviewAction()))
-    Mousetrap.bind('alt+t', () => dispatch(toggleToolbarAction()))
+    document.addEventListener('keydown', (event) => {
+      const { key } = event
+      switch (key) {
+        case '¬':
+          event.preventDefault()
+          dispatch(toggleLibraryAction())
+          break
+        case 'π':
+          event.preventDefault()
+          dispatch(togglePreviewAction())
+          break
+        case '†':
+          event.preventDefault()
+          dispatch(toggleToolbarAction())
+          break
+        default:
+          break
+      }
+    })
   }
-
-  // componentDidUpdate() {
-  //   localStorage.setItem('state', JSON.stringify(this.props.state.toJS()))
-  // }
 
   render() {
     return (

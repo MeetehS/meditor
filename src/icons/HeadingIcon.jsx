@@ -11,7 +11,7 @@ const defaultProps = {
   height: 24,
 }
 
-const H1Icon = ({ text, fill, ...other }) => (
+const HeadingIcon = ({ text, fill, ...other }) => (
   <svg
     version="1.1"
     viewBox="0 0 24 24"
@@ -22,13 +22,13 @@ const H1Icon = ({ text, fill, ...other }) => (
       <rect x="9" y="6" width="2" height="12"></rect>
       <rect x="5" y="11" width="4" height="2"></rect>
       <text fontSize="16" fontWeight="500">
-        <tspan x="14" y="19">{text}</tspan>
+        <tspan x="14" y="17.5">{text}</tspan>
       </text>
     </g>
   </svg>
 )
 
-H1Icon.propTypes = propTypes
-H1Icon.defaultProps = defaultProps
+HeadingIcon.propTypes = propTypes
+HeadingIcon.defaultProps = defaultProps
 
-export default H1Icon
+export default HeadingIcon

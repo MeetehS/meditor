@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+## v1.0.2
+- fix the value of HeadingIcon' text
+- replace node-uuid with uuid
+
 ### v1.0.1
 - use PingFangSC-Regular as default font for macOS
 

@@ -14,28 +14,36 @@ class AppContainer extends Component {
     state: ImmutablePropTypes.map,
   }
 
-  componentDidMount() {
-    const { dispatch } = this.props
-    document.addEventListener('keydown', (event) => {
-      const { key } = event
-      switch (key) {
-        case '¬':
-          event.preventDefault()
-          dispatch(toggleLibraryAction())
-          break
-        case 'π':
-          event.preventDefault()
-          dispatch(togglePreviewAction())
-          break
-        case '†':
-          event.preventDefault()
-          dispatch(toggleToolbarAction())
-          break
-        default:
-          break
-      }
-    })
-  }
+  // componentDidMount() {
+  //   const { dispatch } = this.props
+  //   document.addEventListener('keydown', (event) => {
+  //     const { key } = event
+  //     console.log('key is ', key)
+  //     if (key === 'Alt') {
+  //       this.altKey = true
+  //       return
+  //     }
+  //     if (this.altKey) {
+  //       switch (key) {
+  //         case 'l':
+  //           event.preventDefault()
+  //           dispatch(toggleLibraryAction())
+  //           break
+  //         case 'p':
+  //           event.preventDefault()
+  //           dispatch(togglePreviewAction())
+  //           break
+  //         case 't':
+  //           event.preventDefault()
+  //           dispatch(toggleToolbarAction())
+  //           break
+  //         default:
+  //           this.altKey = false
+  //           break
+  //       }
+  //     }
+  //   })
+  // }
 
   render() {
     return (

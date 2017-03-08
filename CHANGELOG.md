@@ -1,5 +1,10 @@
 ## CHANGELOG
 
+## v1.0.3
+- add `min-width: 0` to input section of the searchbar, look this: [input 在 flex 下的表现](https://mblog.meetehs.com/topic/58bf9d45a392cbdf1efad497)
+- remove shortcuts
+- remove Toolbar toggle
+
 ## v1.0.2
 - fix the value of HeadingIcon' text
 - replace node-uuid with uuid

@@ -1,7 +1,7 @@
 {
   "name": "meditor",
-  "version": "1.0.2",
-  "description": "a pure markdown editor",
+  "version": "1.0.3",
+  "description": "a pure editor",
   "scripts": {
     "webpack-prod": "NODE_ENV=production webpack --config webpack.config.prod.babel.js --progress --colors",
     "start": "webpack-dev-server --inline --hot",
@@ -72,5 +72,5 @@
     "editor",
     "markdown"
   ],
-  "author": "zhiquan"
+  "author": "jelly"
 }

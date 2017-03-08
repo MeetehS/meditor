@@ -10,7 +10,7 @@ import BoldIcon from '../../icons/BoldIcon'
 import ItalicIcon from '../../icons/ItalicIcon'
 import HrIcon from '../../icons/HrIcon'
 import RightToggleIcon from '../../icons/RightToggleIcon'
-import TopToggleIcon from '../../icons/TopToggleIcon'
+// import TopToggleIcon from '../../icons/TopToggleIcon'
 import LeftToggleIcon from '../../icons/svgs/LeftToggle.svg'
 
 import styles from './index.css'
@@ -137,7 +137,7 @@ const Toolbar = ({
     <div>
       <button
         className={styles.toggleLibraryBtn}
-        data-balloon="隐藏或显示文章库(alt+L)"
+        data-balloon="隐藏或显示文章库"
         data-balloon-pos="right"
         onClick={onLibraryToggle}
       >
@@ -163,17 +163,17 @@ const Toolbar = ({
     </div>
 
     <div>
-      <button
+      {/* <button
         className={styles.toggleToolbarBtn}
-        data-balloon="隐藏或显示工具栏(alt+T)"
+        data-balloon="隐藏或显示工具栏"
         data-balloon-pos="left"
         onClick={onToolbarToggle}
       >
         <TopToggleIcon />
-      </button>
+      </button> */}
       <button
         className={styles.togglePreviewBtn}
-        data-balloon="隐藏或显示预览(alt+P)"
+        data-balloon="隐藏或显示预览"
         data-balloon-pos="left"
         onClick={onPreviewToggle}
       >
